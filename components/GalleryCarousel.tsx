@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 
 interface Post {
   id: number;
@@ -83,7 +82,7 @@ const GalleryCarousel = () => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {/* Arrows */}
+        {/* Navigation */}
         <div className="absolute top-1/2 left-2 z-10 -translate-y-1/2">
           <button
             onClick={() =>
@@ -127,26 +126,26 @@ const GalleryCarousel = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 ref={(el) => {
-                  if (actualIndex === index % posts.length) {
+                  if (actualIndex === index) {
                     itemsRef.current[actualIndex] = el;
                   }
                 }}
                 className={`relative min-w-[240px] sm:min-w-[280px] md:min-w-[360px] 
                   h-[340px] sm:h-[400px] md:h-[420px] 
                   bg-[#0f0f0f] rounded-2xl overflow-hidden 
-                  shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
+                  shadow-xl border border-white/10 flex-shrink-0
+                  snap-center transition-all duration-300
                   ${
                     actualIndex === activeIndex
                       ? "scale-105 border-[#ff4d2d]"
-                      : "scale-95 opacity-80 border-white/10"
-                  } hover:scale-105 hover:opacity-100 hover:border-[#ff4d2d]/60`}
+                      : "scale-95 opacity-80"
+                  }
+                  hover:scale-105 hover:opacity-100 hover:border-[#ff4d2d]/60`}
               >
-                <Image
+                <img
                   src={imageUrl}
                   alt={post.title.rendered}
-                  fill
-                  sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 360px"
-                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white font-medium text-lg">
