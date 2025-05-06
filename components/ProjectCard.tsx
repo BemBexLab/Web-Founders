@@ -24,10 +24,21 @@ const ProjectCardGrid = () => {
         const res = await fetch("/api/posts", { cache: "no-store" });
         const data = await res.json();
 
-        // Filter only project posts with required ACF fields
-        const projectPosts = data.filter(
-          (post: Post) => post.acf?.project_image?.url && post.acf?.project_url
-        );
+        // Filter and clean image + project URLs
+        const projectPosts = data
+          .filter(
+            (post: Post) =>
+              post.acf?.project_image?.url && post.acf?.project_url
+          )
+          .map((post: Post) => ({
+            ...post,
+            acf: {
+              project_image: {
+                url: post.acf?.project_image?.url.trim(),
+              },
+              project_url: post.acf?.project_url?.trim(),
+            },
+          }));
 
         setPosts(projectPosts);
       } catch (err) {
@@ -38,7 +49,6 @@ const ProjectCardGrid = () => {
     fetchPosts();
   }, []);
 
-  // Auto-scroll
   useEffect(() => {
     if (isHovering || posts.length === 0) return;
 
@@ -49,7 +59,6 @@ const ProjectCardGrid = () => {
     return () => clearInterval(interval);
   }, [isHovering, posts]);
 
-  // Scroll to active card
   useEffect(() => {
     if (!carouselRef.current || itemsRef.current.length === 0) return;
 
@@ -121,8 +130,8 @@ const ProjectCardGrid = () => {
         >
           {[...posts, ...posts].map((post, index) => {
             const imageUrl =
-              post.acf?.project_image?.url || "/default-image.jpg";
-            const projectUrl = post.acf?.project_url || "#";
+              post.acf?.project_image?.url?.trim() || "/default-image.jpg";
+            const projectUrl = post.acf?.project_url?.trim() || "#";
             const actualIndex = index % posts.length;
 
             return (
@@ -136,18 +145,16 @@ const ProjectCardGrid = () => {
                     itemsRef.current[actualIndex] = el;
                   }
                 }}
-                className={`
-          relative min-w-[300px] sm:min-w-[320px] md:min-w-[360px]
-          h-[360px] sm:h-[400px] md:h-[440px] 
-          bg-black rounded-2xl overflow-hidden 
-          shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
-          ${
-            actualIndex === activeIndex
-              ? "scale-105 border-[#DE2F04]"
-              : "scale-95 opacity-80 border-white/10"
-          }
-          hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60
-        `}
+                className={`relative min-w-[300px] sm:min-w-[320px] md:min-w-[360px]
+                  h-[360px] sm:h-[400px] md:h-[440px] 
+                  bg-black rounded-2xl overflow-hidden 
+                  shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
+                  ${
+                    actualIndex === activeIndex
+                      ? "scale-105 border-[#DE2F04]"
+                      : "scale-95 opacity-80 border-white/10"
+                  }
+                  hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60`}
               >
                 <Image
                   src={imageUrl}
