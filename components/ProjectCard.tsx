@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 
 interface Post {
   id: number;
@@ -111,7 +110,7 @@ const ProjectCardGrid = () => {
           </button>
         </div>
 
-        {/* Carousel Container */}
+        {/* Carousel */}
         <div
           ref={carouselRef}
           className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2"
@@ -140,12 +139,10 @@ const ProjectCardGrid = () => {
                     : "scale-95 opacity-80 border-white/10"
                 } hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60`}
               >
-                <Image
+                <img
                   src={imageUrl}
                   alt={post.title.rendered}
-                  fill
-                  sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 360px"
-                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white font-medium text-lg text-center">
