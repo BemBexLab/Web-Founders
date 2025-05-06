@@ -8,19 +8,21 @@ import React from "react";
  *  add margin of md:mt-10
  *  remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
  */
+type MagicButtonProps = {
+  title: string;
+  icon: React.ReactNode;
+  position?: 'left' | 'right'; // now optional with autocomplete
+  handleClick?: () => void;
+  otherClasses?: string;
+};
+
 const MagicButton = ({
   title,
   icon,
-  position,
+  position = 'right',
   handleClick,
   otherClasses,
-}: {
-  title: string;
-  icon: React.ReactNode;
-  position: string;
-  handleClick?: () => void;
-  otherClasses?: string;
-}) => {
+}: MagicButtonProps) => {
   return (
     <button
       className="relative inline-flex h-12 w-full md:w-60 md:mt-10 overflow-hidden rounded-lg p-[1px] focus:outline-none"
