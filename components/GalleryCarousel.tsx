@@ -17,6 +17,10 @@ const GalleryCarousel = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -61,6 +65,59 @@ const GalleryCarousel = () => {
     }
   }, [activeIndex]);
 
+  // ✅ Drag functionality to swipe between cards
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const handleMouseDown = (e: MouseEvent) => {
+      isDragging.current = true;
+      startX.current = e.pageX;
+      scrollLeft.current = carousel.scrollLeft;
+      carousel.classList.add("dragging");
+    };
+
+    const handleMouseUp = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      carousel.classList.remove("dragging");
+
+      const deltaX = e.pageX - startX.current;
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          setActiveIndex((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
+        } else {
+          setActiveIndex((prev) => (prev === posts.length - 1 ? 0 : prev + 1));
+        }
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      const x = e.pageX;
+      const walk = (x - startX.current) * 1.5;
+      carousel.scrollLeft = scrollLeft.current - walk;
+    };
+
+    const handleMouseLeave = () => {
+      isDragging.current = false;
+      carousel.classList.remove("dragging");
+    };
+
+    carousel.addEventListener("mousedown", handleMouseDown);
+    carousel.addEventListener("mouseup", handleMouseUp);
+    carousel.addEventListener("mousemove", handleMouseMove);
+    carousel.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      carousel.removeEventListener("mousedown", handleMouseDown);
+      carousel.removeEventListener("mouseup", handleMouseUp);
+      carousel.removeEventListener("mousemove", handleMouseMove);
+      carousel.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [posts.length]);
+
   if (posts.length === 0) {
     return (
       <div className="text-white text-center py-10">Loading Projects...</div>
@@ -82,7 +139,7 @@ const GalleryCarousel = () => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {/* Navigation */}
+        {/* Navigation Buttons */}
         <div className="absolute top-1/2 left-2 z-10 -translate-y-1/2">
           <button
             onClick={() =>
@@ -111,7 +168,7 @@ const GalleryCarousel = () => {
         {/* Carousel */}
         <div
           ref={carouselRef}
-          className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2"
+          className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2 cursor-grab active:cursor-grabbing select-none"
         >
           {[...posts, ...posts].map((post, index) => {
             const imageUrl =
@@ -121,7 +178,7 @@ const GalleryCarousel = () => {
 
             return (
               <a
-                key={index}
+                key={`${post.id}-${index}`}
                 href={projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -130,8 +187,7 @@ const GalleryCarousel = () => {
                     itemsRef.current[actualIndex] = el;
                   }
                 }}
-                className={`relative min-w-[240px] sm:min-w-[280px] md:min-w-[360px] 
-                  h-[340px] sm:h-[400px] md:h-[420px] 
+                className={`relative min-w-[320px] sm:min-w-[360px] md:min-w-[400px] max-w-[420px] h-[260px] sm:h-[300px] md:h-[340px] 
                   bg-[#0f0f0f] rounded-2xl overflow-hidden 
                   shadow-xl border border-white/10 flex-shrink-0
                   snap-center transition-all duration-300

@@ -17,7 +17,6 @@ const ServicesSection = () => {
     "Animation",
   ];
 
-  // Intersection Observer for scroll-triggered animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -54,41 +53,43 @@ const ServicesSection = () => {
   };
 
   const hoverVariants = {
-    rest: { 
+    rest: {
       backgroundPosition: "0% 0%",
-      color: "rgba(255, 255, 255, 0.4)"
+      color: "rgba(255, 255, 255, 0.4)",
     },
-    hover: { 
+    hover: {
       backgroundPosition: "100% 100%",
       color: "#ffffff",
       transition: {
         duration: 0.8,
-        ease: [0.83, 0, 0.17, 1]
-      }
-    }
+        ease: [0.83, 0, 0.17, 1],
+      },
+    },
   };
 
   const gradientVariants = {
-    rest: { 
+    rest: {
       opacity: 0,
       scale: 0.8,
-      background: "linear-gradient(90deg, rgba(255,60,27,0) 0%, rgba(255,60,27,0) 100%)"
+      background:
+        "linear-gradient(90deg, rgba(255,60,27,0) 0%, rgba(255,60,27,0) 100%)",
     },
     hover: {
       opacity: 1,
       scale: 1,
-      background: "linear-gradient(90deg, rgba(255,60,27,0.1) 0%, rgba(255,60,27,0.4) 50%, rgba(255,60,27,0.1) 100%)",
+      background:
+        "linear-gradient(90deg, rgba(255,60,27,0.1) 0%, rgba(255,60,27,0.4) 50%, rgba(255,60,27,0.1) 100%)",
       transition: {
         duration: 0.8,
-        ease: [0.83, 0, 0.17, 1]
-      }
-    }
+        ease: [0.83, 0, 0.17, 1],
+      },
+    },
   };
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto z-30 overflow-hidden"
+      className="relative w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto z-30 overflow-visible"
     >
       {/* Floating particles background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -117,9 +118,9 @@ const ServicesSection = () => {
         ))}
       </div>
 
-      {/* Animated star background */}
+      {/* Animated star background - now on the LEFT side */}
       <motion.div
-        className="absolute right-[-10%] top-1/2 -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
+        className="absolute right-[-10%]  -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
         animate={{
           rotate: [0, 360],
           transition: {
@@ -215,7 +216,7 @@ const ServicesSection = () => {
               boxShadow: "0 0 15px rgba(255, 60, 27, 0.3)",
             }}
           >
-            <Link href='Services'>
+            <Link href="Services">
               <span className="relative z-10">See All Services</span>
             </Link>
             <motion.span

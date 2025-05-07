@@ -10,12 +10,18 @@ interface Post {
   };
 }
 
+const DRAG_THRESHOLD = 30; // px before we consider it a real drag
+
 const ProjectCardGrid = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const dragDelta = useRef(0);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -63,6 +69,63 @@ const ProjectCardGrid = () => {
     }
   }, [activeIndex]);
 
+  // ✅ Enhanced Mouse Drag Handler with threshold check
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const handleMouseDown = (e: MouseEvent) => {
+      if (e.button !== 0) return; // Only left-click
+      isDragging.current = true;
+      startX.current = e.pageX - carousel.offsetLeft;
+      scrollLeft.current = carousel.scrollLeft;
+      dragDelta.current = 0;
+      carousel.classList.add("dragging");
+    };
+
+    const handleMouseUp = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      carousel.classList.remove("dragging");
+
+      // Decide whether to swap based on drag distance
+      const moved = dragDelta.current;
+      if (Math.abs(moved) > DRAG_THRESHOLD) {
+        if (moved < 0) {
+          setActiveIndex((prev) => (prev + 1) % posts.length);
+        } else {
+          setActiveIndex((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
+        }
+      }
+    };
+
+    const handleMouseLeave = () => {
+      isDragging.current = false;
+      carousel.classList.remove("dragging");
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = x - startX.current;
+      dragDelta.current = walk;
+      carousel.scrollLeft = scrollLeft.current - walk;
+    };
+
+    carousel.addEventListener("mousedown", handleMouseDown);
+    carousel.addEventListener("mouseup", handleMouseUp);
+    carousel.addEventListener("mouseleave", handleMouseLeave);
+    carousel.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      carousel.removeEventListener("mousedown", handleMouseDown);
+      carousel.removeEventListener("mouseup", handleMouseUp);
+      carousel.removeEventListener("mouseleave", handleMouseLeave);
+      carousel.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [posts.length]);
+
   if (posts.length === 0) {
     return (
       <div className="text-white text-center py-10">Loading Projects...</div>
@@ -84,7 +147,7 @@ const ProjectCardGrid = () => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {/* Navigation Arrows */}
+        {/* Arrows */}
         <div className="absolute top-1/2 left-2 z-10 -translate-y-1/2">
           <button
             onClick={() =>
@@ -113,7 +176,7 @@ const ProjectCardGrid = () => {
         {/* Carousel */}
         <div
           ref={carouselRef}
-          className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2"
+          className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2 cursor-grab active:cursor-grabbing select-none"
         >
           {[...posts, ...posts].map((post, index) => {
             const imageUrl =
@@ -123,7 +186,7 @@ const ProjectCardGrid = () => {
 
             return (
               <a
-                key={index}
+                key={`${post.id}-${index}`}
                 href={projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -132,8 +195,9 @@ const ProjectCardGrid = () => {
                     itemsRef.current[actualIndex] = el;
                   }
                 }}
-                className={`relative min-w-[300px] sm:min-w-[320px] md:min-w-[360px] h-[360px] sm:h-[400px] md:h-[440px] 
-                bg-black rounded-2xl overflow-hidden shadow-xl border transition-all duration-300 flex-shrink-0 snap-center ${
+                className={`relative min-w-[320px] sm:min-w-[360px] md:min-w-[400px] max-w-[420px] h-[260px] sm:h-[300px] md:h-[340px] 
+                bg-black rounded-2xl overflow-hidden shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
+                ${
                   actualIndex === activeIndex
                     ? "scale-105 border-[#DE2F04]"
                     : "scale-95 opacity-80 border-white/10"
