@@ -3,7 +3,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const ServicesSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const controls = useAnimation();
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -52,75 +52,14 @@ const ServicesSection = () => {
     }),
   };
 
-  const hoverVariants = {
-    rest: {
-      backgroundPosition: "0% 0%",
-      color: "rgba(255, 255, 255, 0.4)",
-    },
-    hover: {
-      backgroundPosition: "100% 100%",
-      color: "#ffffff",
-      transition: {
-        duration: 0.8,
-        ease: [0.83, 0, 0.17, 1],
-      },
-    },
-  };
-
-  const gradientVariants = {
-    rest: {
-      opacity: 0,
-      scale: 0.8,
-      background:
-        "linear-gradient(90deg, rgba(255,60,27,0) 0%, rgba(255,60,27,0) 100%)",
-    },
-    hover: {
-      opacity: 1,
-      scale: 1,
-      background:
-        "linear-gradient(90deg, rgba(255,60,27,0.1) 0%, rgba(255,60,27,0.4) 50%, rgba(255,60,27,0.1) 100%)",
-      transition: {
-        duration: 0.8,
-        ease: [0.83, 0, 0.17, 1],
-      },
-    },
-  };
-
   return (
     <section
       ref={containerRef}
       className="relative w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto z-30 overflow-visible"
     >
-      {/* Floating particles background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-[#ff3c1b]"
-            initial={{
-              x: Math.random() * 100,
-              y: Math.random() * 100,
-              width: Math.random() * 10 + 2,
-              height: Math.random() * 10 + 2,
-              opacity: Math.random() * 0.2 + 0.1,
-            }}
-            animate={{
-              y: [null, Math.random() * 100 - 50],
-              x: [null, Math.random() * 100 - 50],
-              transition: {
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "linear",
-              },
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Animated star background - now on the LEFT side */}
+      {/* 🔁 Rotating Star Background */}
       <motion.div
-        className="absolute right-[-10%]  -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
+        className="absolute right-[-1%]  -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
         animate={{
           rotate: [0, 360],
           transition: {
@@ -163,76 +102,54 @@ const ServicesSection = () => {
             },
           }}
         >
-          <motion.p
-            className="text-[#ff4d2d] font-semibold mb-3 text-sm sm:text-base"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
+          <p className="text-[#ff4d2d] font-semibold mb-3 text-sm sm:text-base">
             Our Services
-          </motion.p>
-
+          </p>
           <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.35] mb-8">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
+            <div>
               <span className="text-white">E</span>
               <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
                 xp
               </span>{" "}
               Website
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
+            </div>
+            <div>
               <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
                 De
               </span>
               velopment &
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
+            </div>
+            <div>
               <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
                 D
               </span>
               esign Solutions
-            </motion.div>
+            </div>
           </h2>
-
-          <motion.button
-            className="relative px-6 py-3 rounded-full text-white text-sm flex items-center gap-2 bg-[#1a1a1a]/60 backdrop-blur-md border border-transparent group overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            whileHover={{
-              borderColor: "rgba(255, 60, 27, 0.3)",
-              boxShadow: "0 0 15px rgba(255, 60, 27, 0.3)",
-            }}
-          >
-            <Link href="Services">
-              <span className="relative z-10">See All Services</span>
-            </Link>
-            <motion.span
-              className="text-lg relative z-10"
-              whileHover={{ x: 5 }}
-              transition={{ type: "spring", stiffness: 500 }}
+          <Link href="Services">
+            <motion.button
+              className="relative px-6 py-3 rounded-full text-white text-sm flex items-center gap-2 bg-[#1a1a1a]/60 backdrop-blur-md border border-transparent group overflow-hidden"
+              whileHover={{
+                borderColor: "rgba(255, 60, 27, 0.3)",
+                boxShadow: "0 0 15px rgba(255, 60, 27, 0.3)",
+              }}
             >
-              →
-            </motion.span>
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ff3c1b]/10 to-transparent opacity-0"
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-            />
-            <span className="absolute inset-0 rounded-full shadow-[inset_0_4px_6px_rgba(255,255,255,0.08)]" />
-          </motion.button>
+              <span className="relative z-10">See All Services</span>
+              <motion.span
+                className="text-lg relative z-10"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 500 }}
+              >
+                →
+              </motion.span>
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ff3c1b]/10 to-transparent opacity-0"
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+              <span className="absolute inset-0 rounded-full shadow-[inset_0_4px_6px_rgba(255,255,255,0.08)]" />
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Right Column */}
@@ -249,56 +166,29 @@ const ServicesSection = () => {
                 variants={itemVariants}
                 className="relative"
                 onMouseEnter={() => setActiveIndex(i)}
-                onMouseLeave={() => setActiveIndex(-1)}
+                onMouseLeave={() => setActiveIndex(null)}
               >
-                <motion.div
-                  className={`relative z-20 uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] pb-6 pl-6 cursor-pointer`}
-                  initial="rest"
-                  animate={activeIndex === i ? "hover" : "rest"}
-                  variants={hoverVariants}
-                  style={{
-                    backgroundSize: "200% 200%",
-                    backgroundImage:
-                      "linear-gradient(90deg, rgba(255,60,27,0) 0%, rgba(255,60,27,0.1) 50%, rgba(255,60,27,0) 100%)",
-                  }}
-                >
-                  {item}
-
+                <div className="relative inline-block">
+                  {/* Capsule hover background */}
                   <AnimatePresence>
                     {activeIndex === i && (
                       <motion.div
-                        className="absolute left-0 top-0 h-full w-1 bg-[#ff3c1b] rounded-r-full"
-                        initial={{ scaleY: 0, originY: 0 }}
-                        animate={{ scaleY: 1 }}
-                        exit={{ scaleY: 0 }}
-                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      />
+                        className="absolute inset-0 -z-10 flex items-center justify-center"
+                        initial={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
+                        animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+                        exit={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <div className="w-[480px] h-[100px] rounded-[115px] border border-[#DE2F04] bg-[rgba(222,47,4,0.10)] backdrop-blur-[9.137930870056152px] shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]" />
+                      </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
 
-                <AnimatePresence>
-                  {activeIndex === i && (
-                    <motion.div
-                      className="absolute inset-0 z-10 rounded-lg pointer-events-none"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-[#ff3c1b]/10 to-transparent rounded-lg"
-                        variants={gradientVariants}
-                      />
-                      <motion.div
-                        className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-[#ff3c1b] to-transparent"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  {/* Text */}
+                  <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] px-6 py-4 text-white">
+                    {item}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
