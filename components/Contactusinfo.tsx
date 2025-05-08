@@ -1,21 +1,68 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ContactUsSection() {
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    service: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      alert("Message sent successfully!");
+      setForm({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        service: "",
+        subject: "",
+        message: "",
+      });
+    } else {
+      alert("There was an error sending your message.");
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <section className="bg-[#0A0A11] py-16 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between">
       {/* Left Side - Contact Information */}
       <div className="w-full sm:w-1/2 text-white ml-0 sm:ml-12 mb-12 sm:mb-0">
-        {/* Small Heading */}
         <h1 className="text-3xl sm:text-4xl font-bold text-[#DE2F04] mb-4">
           Contact us
         </h1>
-
-        {/* Larger Heading */}
         <h2 className="text-4xl sm:text-6xl font-extrabold leading-tight mb-6">
           Get In Touch
         </h2>
 
-        {/* Contact Information */}
         <div className="flex items-center space-x-6 mb-6">
           <div className="relative bg-[#DE2F04] rounded-full p-6">
             <Image
@@ -61,15 +108,21 @@ export default function ContactUsSection() {
       {/* Right Side - Contact Form */}
       <div className="w-full sm:w-1/2 bg-[#1F1F1F] p-8 rounded-lg shadow-xl border-2 border-[#DE2F04] bg-opacity-20 backdrop-blur-md">
         <h2 className="text-3xl text-white mb-6">Contact Form</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
             <input
+              name="first_name"
+              value={form.first_name}
+              onChange={handleChange}
               type="text"
               className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04] mb-4 sm:mb-0"
               placeholder="First Name"
               required
             />
             <input
+              name="last_name"
+              value={form.last_name}
+              onChange={handleChange}
               type="text"
               className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
               placeholder="Last Name"
@@ -78,12 +131,18 @@ export default function ContactUsSection() {
           </div>
           <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
             <input
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               type="email"
               className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04] mb-4 sm:mb-0"
               placeholder="Email"
               required
             />
             <input
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
               type="tel"
               className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
               placeholder="Phone number"
@@ -92,6 +151,9 @@ export default function ContactUsSection() {
           </div>
           <div className="mb-6">
             <select
+              name="service"
+              value={form.service}
+              onChange={handleChange}
               className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
               required
             >
@@ -104,6 +166,9 @@ export default function ContactUsSection() {
           </div>
           <div className="mb-6">
             <input
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
               type="text"
               className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
               placeholder="Subject"
@@ -112,13 +177,20 @@ export default function ContactUsSection() {
           </div>
           <div className="mb-6">
             <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
               placeholder="Details"
               required
-            ></textarea>
+            />
           </div>
-          <button className="bg-[#DE2F04] text-white px-6 py-3 rounded-[75px] font-semibold border-2 border-[#DE2F04] bg-opacity-10 backdrop-blur-md shadow-lg hover:shadow-xl hover:bg-opacity-20 transition-all duration-300">
-            Send Message →
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-[#DE2F04] text-white px-6 py-3 rounded-[75px] font-semibold border-2 border-[#DE2F04] bg-opacity-10 backdrop-blur-md shadow-lg hover:shadow-xl hover:bg-opacity-20 transition-all duration-300"
+          >
+            {isSubmitting ? "Sending..." : "Send Message →"}
           </button>
         </form>
       </div>

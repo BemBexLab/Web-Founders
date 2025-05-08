@@ -1,4 +1,3 @@
-// /app/api/posts/route.js
 
 export async function GET() {
   try {
