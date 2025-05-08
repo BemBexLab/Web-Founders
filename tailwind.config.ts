@@ -146,6 +146,7 @@ const config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
+        
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

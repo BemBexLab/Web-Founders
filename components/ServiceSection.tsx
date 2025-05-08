@@ -57,9 +57,9 @@ const ServicesSection = () => {
       ref={containerRef}
       className="relative w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto z-30 overflow-visible"
     >
-      {/* 🔁 Rotating Star Background */}
+      {/* Rotating Star Background */}
       <motion.div
-        className="absolute right-[-1%]  -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
+        className="absolute right-[-1%] -translate-y-1/2 z-0 opacity-70 scale-[0.9] pointer-events-none"
         animate={{
           rotate: [0, 360],
           transition: {
@@ -153,45 +153,39 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Right Column */}
-        <div className="w-full lg:w-1/2 relative">
-          <motion.div
-            className="grid gap-6 sm:gap-7 relative z-10"
-            initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
-          >
-            {services.map((item, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                variants={itemVariants}
-                className="relative"
-                onMouseEnter={() => setActiveIndex(i)}
-                onMouseLeave={() => setActiveIndex(null)}
-              >
-                <div className="relative inline-block">
-                  {/* Capsule hover background */}
-                  <AnimatePresence>
-                    {activeIndex === i && (
-                      <motion.div
-                        className="absolute inset-0 -z-10 flex items-center justify-center"
-                        initial={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
-                        animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                        exit={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                      >
-                        <div className="w-[480px] h-[100px] rounded-[115px] border border-[#DE2F04] bg-[rgba(222,47,4,0.10)] backdrop-blur-[9.137930870056152px] shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+        <div className="grid gap-3 sm:gap-4 relative z-10">
+          {services.map((item, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              variants={itemVariants}
+              className="relative"
+              onMouseEnter={() => setActiveIndex(i)}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              <div className="relative  w-[480px] h-[72px] flex items-center pl-6">
+                {/* Capsule */}
+                <AnimatePresence>
+                  {activeIndex === i && (
+                    <motion.div
+                      className="absolute left-0 top-0 w-full h-full -z-10 sm-w-[100px]"
+                      initial={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
+                      animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+                      exit={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    >
+                      <div className="w-full h-full rounded-[115px] border border-[#DE2F04] bg-[rgba(222,47,4,0.10)] backdrop-blur-[9.13px] shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-                  {/* Text */}
-                  <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] px-6 py-4 text-white">
-                    {item}
-                  </div>
+                {/* Text */}
+                <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] text-white leading-none">
+                  {item}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
