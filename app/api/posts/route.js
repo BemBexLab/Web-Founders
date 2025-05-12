@@ -1,16 +1,25 @@
-
 export async function GET() {
   try {
-    const response = await fetch("https://olive-peafowl-546702.hostingersite.com/wp-json/wp/v2/posts?per_page=100", {
-      cache: "no-store",
-    });
+    const allPosts = [];
+    let page = 1;
+    let hasMore = true;
 
-    if (!response.ok) {
-      return new Response("Failed to fetch posts", { status: response.status });
+    while (hasMore) {
+      const res = await fetch(`https://olive-peafowl-546702.hostingersite.com/wp-json/wp/v2/posts?per_page=100&page=${page}`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) break;
+
+      const posts = await res.json();
+      allPosts.push(...posts);
+
+      // If fewer than 100 returned, this is the last page
+      if (posts.length < 100) hasMore = false;
+      else page++;
     }
 
-    const data = await response.json();
-    return new Response(JSON.stringify(data), {
+    return new Response(JSON.stringify(allPosts), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

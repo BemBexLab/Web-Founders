@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import dynamic from "next/dynamic";
+
+// Dynamically import the client-only BackButton
+const BackButton = dynamic(() => import("../[slug]/BackButton"), { ssr: false });
 
 const API_URL =
   "https://olive-peafowl-546702.hostingersite.com/wp-json/wp/v2/posts?slug=";
@@ -24,8 +27,7 @@ export default async function ProjectPage({
   if (!res.ok) return notFound();
 
   const data = await res.json();
-  const project = data[0]; // slug returns an array
-
+  const project = data[0];
   if (!project) return notFound();
 
   const imageUrl = project.acf?.project_image?.url || "/default.jpg";
@@ -78,23 +80,19 @@ export default async function ProjectPage({
 
       {/* Back Button */}
       <div className="mt-16 text-center">
-        <Link
-          href="../"
-          className="inline-block bg-[#DE2F04] hover:bg-white hover:text-black transition-colors duration-300 text-white font-medium px-6 py-3 rounded-full"
-        >
-          ← Back to Portfolio
-        </Link>
+        <BackButton />
       </div>
     </div>
   );
 }
 
-// Reusable Section Component
 function Section({ title, text }: { title: string; text: string }) {
   return (
     <div className="space-y-3">
       <h2 className="text-xl font-semibold text-[#DE2F04]">{title}</h2>
-      <p className="text-white text-lg leading-relaxed whitespace-pre-line">{text}</p>
+      <p className="text-white text-lg leading-relaxed whitespace-pre-line">
+        {text}
+      </p>
     </div>
   );
 }
