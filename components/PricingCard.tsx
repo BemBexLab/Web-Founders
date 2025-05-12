@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
 
 interface PricingFeature {
   text: string;
@@ -12,7 +12,7 @@ interface PricingCardProps {
   originalPrice: string;
   referralDiscount: string;
   features: PricingFeature[];
-  variant: 'side' | 'center';
+  variant: "side" | "center";
   isMobile?: boolean;
 }
 
@@ -23,11 +23,11 @@ const PricingCard: React.FC<PricingCardProps> = ({
   referralDiscount,
   features,
   variant,
-  isMobile = false
+  isMobile = false,
 }) => {
   const redColor = "#DE2F04";
   const grayColor = "#444444";
-  
+
   return (
     <div
       className={`
@@ -171,7 +171,7 @@ const PricingCards: React.FC = () => {
         { text: "48 to 72 hours TAT" },
         { text: "Complete Deployment" },
       ],
-      variant: 'side'
+      variant: "side",
     },
     {
       title: "Standard Website Package",
@@ -188,7 +188,7 @@ const PricingCards: React.FC = () => {
         { text: "Complete Deployment" },
         { text: "Dedicated Project Manager" },
       ],
-      variant: 'center'
+      variant: "center",
     },
     {
       title: "Premium Website Package",
@@ -204,7 +204,7 @@ const PricingCards: React.FC = () => {
         { text: "48 to 72 hours TAT" },
         { text: "Complete Deployment" },
       ],
-      variant: 'side'
+      variant: "side",
     },
     {
       title: "E-commerce Package",
@@ -220,7 +220,7 @@ const PricingCards: React.FC = () => {
         { text: "48 to 72 hours TAT" },
         { text: "Complete Deployment" },
       ],
-      variant: 'side'
+      variant: "side",
     },
     {
       title: "Gold E-commerce Package",
@@ -237,7 +237,7 @@ const PricingCards: React.FC = () => {
         { text: "Complete Deployment" },
         { text: "Dedicated Project Manager" },
       ],
-      variant: 'center'
+      variant: "center",
     },
     {
       title: "Platinum E-commerce Package",
@@ -253,7 +253,7 @@ const PricingCards: React.FC = () => {
         { text: "48 to 72 hours TAT" },
         { text: "Complete Deployment" },
       ],
-      variant: 'side'
+      variant: "side",
     },
   ];
 
@@ -264,20 +264,40 @@ const PricingCards: React.FC = () => {
           Choose Your Plan
         </h2>
 
-        {/* Mobile View - Horizontal Scroller with Dots */}
+        {/* Mobile View - Left/Right Arrow Navigation */}
         <div className="md:hidden">
-          <div className="relative">
-            <div className="overflow-x-auto pb-6 scrollbar-hide">
-              <div
-                className="flex space-x-4"
-                style={{ width: `${pricingData.length * 280}px` }}
+          <div className="relative flex flex-col items-center">
+            <div className="flex items-center justify-between w-full max-w-xs mx-auto">
+              <button
+                onClick={() =>
+                  setSelectedPackage((prev) =>
+                    prev === 0 ? pricingData.length - 1 : prev - 1
+                  )
+                }
+                className="text-white p-2"
+                aria-label="Previous Package"
               >
-                {pricingData.map((card, index) => (
-                  <div key={index} className="w-[280px]">
-                    <PricingCard {...card} isMobile={true} />
-                  </div>
-                ))}
+                ←
+              </button>
+
+              <div className="w-[280px] flex-shrink-0">
+                <PricingCard
+                  {...pricingData[selectedPackage]}
+                  isMobile={true}
+                />
               </div>
+
+              <button
+                onClick={() =>
+                  setSelectedPackage((prev) =>
+                    prev === pricingData.length - 1 ? 0 : prev + 1
+                  )
+                }
+                className="text-white p-2"
+                aria-label="Next Package"
+              >
+                →
+              </button>
             </div>
 
             {/* Scroll indicators */}
@@ -285,16 +305,7 @@ const PricingCards: React.FC = () => {
               {pricingData.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => {
-                    const container =
-                      document.querySelector(".overflow-x-auto");
-                    if (container) {
-                      container.scrollTo({
-                        left: index * 300,
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
+                  onClick={() => setSelectedPackage(index)}
                   className={`w-2 h-2 rounded-full ${
                     selectedPackage === index ? "bg-[#DE2F04]" : "bg-gray-600"
                   }`}
@@ -302,21 +313,6 @@ const PricingCards: React.FC = () => {
                 />
               ))}
             </div>
-          </div>
-
-          {/* Package Selector Dropdown */}
-          <div className="mt-6">
-            <select
-              value={selectedPackage}
-              onChange={(e) => setSelectedPackage(Number(e.target.value))}
-              className="w-full bg-neutral-900 text-white py-3 px-4 rounded-lg border border-neutral-700 focus:border-[#DE2F04] focus:outline-none text-sm"
-            >
-              {pricingData.map((card, index) => (
-                <option key={index} value={index}>
-                  {card.title} - {card.price}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 
@@ -332,28 +328,6 @@ const PricingCards: React.FC = () => {
           {pricingData.map((card, index) => (
             <PricingCard key={index} {...card} />
           ))}
-        </div>
-
-        {/* Contact CTA */}
-        <div className="mt-8 sm:mt-12 text-center">
-          <p className="text-neutral-400 mb-4 text-sm sm:text-base">
-            Need a custom solution? Contact our team for a personalized quote.
-          </p>
-          <Link href='/ContactUs'>
-            <button
-              className="inline-block text-white py-2 px-6 rounded-full transition-all text-sm sm:text-base hover:bg-[#DE2F04]/20"
-              style={{
-                borderRadius: "75px",
-                border: "1px solid #DE2F04",
-                background: "rgba(222, 47, 4, 0.10)",
-                backdropFilter: "blur(9.14px)",
-                boxShadow:
-                  "4px -4px 8px 0px rgba(169, 36, 3, 0.10) inset, -4px 4px 8px 0px rgba(255, 255, 255, 0.10) inset",
-              }}
-            >
-              Contact Sales
-            </button>
-          </Link>
         </div>
       </div>
     </div>
