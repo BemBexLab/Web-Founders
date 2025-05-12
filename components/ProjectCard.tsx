@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 interface Post {
   id: number;
@@ -9,11 +9,9 @@ interface Post {
   acf?: {
     project_image?: { url: string };
     project_url?: string;
-    catogary?: string | string[]; // Accept both single and multiple values
+    catogary?: string | string[];
   };
 }
-
-const DRAG_THRESHOLD = 30;
 
 const categories = [
   "WEB DEVELOPMENT",
@@ -30,29 +28,18 @@ const categories = [
 const ProjectCardGrid = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("WEB DEVELOPMENT");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
-  const dragDelta = useRef(0);
 
-  const filteredPosts =
-    selectedCategory === "WEB DEVELOPMEN"
-      ? posts
-      : posts.filter((post) => {
-          const cat = post.acf?.catogary;
-          if (Array.isArray(cat)) {
-            return cat.some(
-              (c) => c.toLowerCase() === selectedCategory.toLowerCase()
-            );
-          } else if (typeof cat === "string") {
-            return cat.toLowerCase() === selectedCategory.toLowerCase();
-          }
-          return false;
-        });
+  const filteredPosts = posts.filter((post) => {
+    const cat = post.acf?.catogary;
+    if (!cat) return false;
+
+    if (Array.isArray(cat)) {
+      return cat.some(
+        (c) => c.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+    return cat.toLowerCase() === selectedCategory.toLowerCase();
+  });
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -71,104 +58,25 @@ const ProjectCardGrid = () => {
     fetchPosts();
   }, []);
 
-  useEffect(() => {
-    if (isHovering || filteredPosts.length === 0) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) =>
-        prev === filteredPosts.length - 1 ? 0 : prev + 1
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isHovering, filteredPosts.length]);
-
-  useEffect(() => {
-    if (!carouselRef.current || itemsRef.current.length === 0) return;
-    const activeItem = itemsRef.current[activeIndex];
-    if (activeItem) {
-      const scrollPosition =
-        activeItem.offsetLeft -
-        carouselRef.current.offsetWidth / 2 +
-        activeItem.offsetWidth / 2;
-
-      carouselRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const handleMouseDown = (e: MouseEvent) => {
-      if (e.button !== 0) return;
-      isDragging.current = true;
-      startX.current = e.pageX - carousel.offsetLeft;
-      scrollLeft.current = carousel.scrollLeft;
-      dragDelta.current = 0;
-      carousel.classList.add("dragging");
-    };
-
-    const handleMouseUp = () => {
-      if (!isDragging.current) return;
-      isDragging.current = false;
-      carousel.classList.remove("dragging");
-      const moved = dragDelta.current;
-      if (Math.abs(moved) > DRAG_THRESHOLD) {
-        if (moved < 0) {
-          setActiveIndex((prev) => (prev + 1) % filteredPosts.length);
-        } else {
-          setActiveIndex((prev) =>
-            prev === 0 ? filteredPosts.length - 1 : prev - 1
-          );
-        }
-      }
-    };
-
-    const handleMouseLeave = () => {
-      isDragging.current = false;
-      carousel.classList.remove("dragging");
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging.current) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = x - startX.current;
-      dragDelta.current = walk;
-      carousel.scrollLeft = scrollLeft.current - walk;
-    };
-
-    carousel.addEventListener("mousedown", handleMouseDown);
-    carousel.addEventListener("mouseup", handleMouseUp);
-    carousel.addEventListener("mouseleave", handleMouseLeave);
-    carousel.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      carousel.removeEventListener("mousedown", handleMouseDown);
-      carousel.removeEventListener("mouseup", handleMouseUp);
-      carousel.removeEventListener("mouseleave", handleMouseLeave);
-      carousel.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [filteredPosts.length]);
-
-  if (posts.length === 0) {
-    return (
-      <div className="text-white text-center py-10">Loading Projects...</div>
-    );
-  }
-
   return (
     <section className="w-full py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto bg-[#0A0A11] text-white">
+      {/* Section Heading */}
+      <p className="text-[#DE2F04] font-semibold mb-2 text-center">
+        Featured Projects
+      </p>
+      <h2 className="text-white text-4xl sm:text-5xl font-bold mb-10 leading-tight text-center">
+        Our{" "}
+        <span className="bg-gradient-to-r from-[#DE2F04] to-white text-transparent bg-clip-text">
+          Portfolio
+        </span>
+      </h2>
+
+      {/* Category Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         {categories.map((label) => (
           <span
             key={label}
-            onClick={() => {
-              setSelectedCategory(label);
-              setActiveIndex(0);
-            }}
+            onClick={() => setSelectedCategory(label)}
             className={`px-4 py-1.5 text-sm sm:text-base rounded-full border backdrop-blur-md cursor-pointer transition shadow-[0_0_8px_#ff1e00aa] ${
               selectedCategory === label
                 ? "bg-[#DE2F04] border-[#DE2F04] text-white"
@@ -180,77 +88,26 @@ const ProjectCardGrid = () => {
         ))}
       </div>
 
-      <p className="text-[#DE2F04] font-semibold mb-2 text-center">
-        Featured Projects
-      </p>
-      <h2 className="text-white text-4xl sm:text-5xl font-bold mb-10 leading-tight text-center">
-        Our{" "}
-        <span className="bg-gradient-to-r from-[#DE2F04] to-white text-transparent bg-clip-text">
-          Portfolio
-        </span>
-      </h2>
-
-      <div
-        className="relative w-full overflow-x-hidden"
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-      >
-        <div className="absolute top-1/2 left-2 z-10 -translate-y-1/2">
-          <button
-            onClick={() =>
-              setActiveIndex((prev) =>
-                prev === 0 ? filteredPosts.length - 1 : prev - 1
-              )
-            }
-            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300"
-          >
-            ←
-          </button>
-        </div>
-        <div className="absolute top-1/2 right-2 z-10 -translate-y-1/2">
-          <button
-            onClick={() =>
-              setActiveIndex((prev) =>
-                prev === filteredPosts.length - 1 ? 0 : prev + 1
-              )
-            }
-            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300"
-          >
-            →
-          </button>
-        </div>
-
-        <div
-          ref={carouselRef}
-          className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2 cursor-grab active:cursor-grabbing select-none"
-        >
-          {[...filteredPosts, ...filteredPosts].map((post, index) => {
+      {/* Projects Grid or Loading Message */}
+      {posts.length === 0 ? (
+        <div className="text-white text-center py-10">Loading Projects...</div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+          {filteredPosts.map((post) => {
             const imageUrl = post.acf?.project_image?.url || "/default.jpg";
-            const actualIndex = index % filteredPosts.length;
 
             return (
               <Link
-                key={`${post.id}-${index}`}
+                key={post.id}
                 href={`/projects/${post.slug}`}
-                ref={(el) => {
-                  if (actualIndex === index) {
-                    itemsRef.current[actualIndex] = el;
-                  }
-                }}
-                className={`relative min-w-[320px] sm:min-w-[360px] md:min-w-[400px] max-w-[420px] h-[260px] sm:h-[300px] md:h-[340px] 
-                  bg-black rounded-2xl overflow-hidden shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
-                  ${
-                    actualIndex === activeIndex
-                      ? "scale-105 border-[#DE2F04]"
-                      : "scale-95 opacity-80 border-white/10"
-                  } hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60`}
+                className="group relative w-full bg-black rounded-2xl overflow-hidden shadow-xl border border-white/10 transition-all duration-300 hover:scale-[1.02] hover:border-[#DE2F04]/60"
               >
                 <img
                   src={imageUrl}
                   alt={post.title.rendered}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
+                  className="w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white font-medium text-lg text-center">
                     {post.title.rendered}
                   </span>
@@ -259,21 +116,7 @@ const ProjectCardGrid = () => {
             );
           })}
         </div>
-
-        <div className="flex justify-center gap-2 mt-6">
-          {filteredPosts.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "w-8 bg-[#DE2F04]"
-                  : "w-2 bg-white/30 hover:bg-white/50"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
+      )}
     </section>
   );
 };
