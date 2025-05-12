@@ -9,7 +9,7 @@ const testimonials = [
     name: "Samantha Milner",
     company: "Mindful LLC",
     message:
-      "We now have a fantastic website that perfectly encapsulates the essence of our company thanks to them. Their service has exceeded all of our expectations, making us extremely happy.",
+      "We now have a fantastic website that perfectly encapsulates the essence of our company thanks to them. Their service has exceeded all of our expectations.",
     image: "/Ellipse6.png",
   },
   {
