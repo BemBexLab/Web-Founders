@@ -1,12 +1,14 @@
 "use client";
 
+import Foooter from "@/components/Foooter";
 import Privacy from "@/components/Privacy";
-import TermsAndConditions from "@/components/Termsandconditions";
+
 
 const PrivacyandPolicy = () => {
   return (
     <main className="w-full overflow-hidden">
       <Privacy />
+      <Foooter />
     </main>
   );
 };

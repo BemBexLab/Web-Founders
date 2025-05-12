@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Foooter from "./Foooter";
 import Link from "next/link";
 
 const Privacy = () => {
@@ -360,7 +358,6 @@ const Privacy = () => {
             </li>
           </ul>
         </section>
-        <Foooter />
       </main>
     </>
   );

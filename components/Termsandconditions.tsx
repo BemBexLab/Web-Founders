@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Foooter from "./Foooter";
 
 const TermsAndConditions = () => {
   return (
@@ -526,7 +524,7 @@ const TermsAndConditions = () => {
             </li>
           </ul>
         </section>
-        <Foooter />
+        
       </main>
     </>
   );

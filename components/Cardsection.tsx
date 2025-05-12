@@ -53,7 +53,6 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [clickedArrows, setClickedArrows] = useState<number[]>([]);
 
   const handleArrowClick = (index: number) => {
@@ -103,94 +102,57 @@ const ServicesSection = () => {
           {services.map((service, i) => (
             <motion.div
               key={i}
-              className="group relative rounded-[30px] bg-[rgba(222,47,4,0.10)] backdrop-blur-[33px] p-6 md:p-8 flex flex-col justify-between shadow-[0_4px_30px_#ff3c1b11] overflow-hidden cursor-pointer"
+              className="group relative rounded-[30px] bg-[rgba(222,47,4,0.10)] backdrop-blur-[33px] p-6 md:p-8 flex flex-col justify-between border border-transparent transition-all duration-300 hover:border-[#DE2F04] cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
               viewport={{ once: true, margin: "-50px" }}
-              whileHover={{
-                scale: 1.02,
-                boxShadow: "0 8px 40px #ff3c1b22",
-              }}
-              onHoverStart={() => setHoveredCard(i)}
-              onHoverEnd={() => setHoveredCard(null)}
             >
               {/* Link Overlay */}
               <Link href="/ContactUs" className="absolute inset-0 z-10" />
 
-              {/* Floating Particles */}
-              {hoveredCard === i && (
-                <>
-                  {[...Array(8)].map((_, particleIndex) => (
-                    <motion.div
-                      key={particleIndex}
-                      className="absolute rounded-full bg-[#FF3C1B] opacity-0 group-hover:opacity-30"
-                      initial={{
-                        x: Math.random() * 100 - 50,
-                        y: Math.random() * 100 - 50,
-                        width: Math.random() * 6 + 2,
-                        height: Math.random() * 6 + 2,
-                      }}
-                      animate={{
-                        x: [0, Math.random() * 40 - 20],
-                        y: [0, Math.random() * 40 - 20],
-                        transition: {
-                          duration: Math.random() * 5 + 5,
-                          repeat: Infinity,
-                          repeatType: "reverse",
-                          ease: "linear",
-                        },
-                      }}
-                    />
-                  ))}
-                </>
-              )}
-
               {/* Card Content */}
               <div className="relative z-20">
-                <motion.div className="w-14 h-14 md:w-16 md:h-16 mb-4 md:mb-6 p-2 flex items-center justify-center rounded-[20px] bg-[rgba(255,255,255,0.10)] backdrop-blur-[33.15px] border-t border-white/60 border-l-transparent border-r-transparent border-b-0">
-                  <motion.img
+                {/* Icon */}
+                <div className="w-14 h-14 md:w-16 md:h-16 mb-4 md:mb-6 p-2 flex items-center justify-center rounded-[20px] bg-[rgba(255,255,255,0.10)] backdrop-blur-[33.15px] transition-all duration-300 border border-transparent group-hover:border-[#DE2F04]">
+                  <img
                     src={service.img}
                     alt={service.title}
                     className="w-6 h-6 md:w-8 md:h-8 object-contain"
                   />
-                </motion.div>
-                <motion.h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">
+                </div>
+
+                {/* Title */}
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">
                   <span className="bg-gradient-to-r from-[#ffb199] to-white text-transparent bg-clip-text">
                     {service.title.split(" ")[0]}
                   </span>{" "}
                   {service.title.split(" ").slice(1).join(" ")}
-                </motion.h3>
-                <motion.p className="text-white/60 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
+                </h3>
+
+                {/* Description */}
+                <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
                   {service.desc}
-                </motion.p>
+                </p>
 
                 {/* Arrow */}
                 <Link href="/ContactUs">
-                  <motion.div
+                  <div
                     className="relative w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-[20px] bg-[rgba(222,47,4,0.10)] backdrop-blur-[33.15px] overflow-hidden cursor-pointer"
                     onClick={() => handleArrowClick(i)}
-                    whileTap={{ scale: 0.95 }}
                   >
-                    <motion.div className="absolute inset-0 w-11 bg-[#FF3C1B] rounded-[20px] z-0" />
-                    <motion.div
+                    <div
                       className="relative z-10 text-white text-lg font-bold"
-                      animate={{
-                        x: clickedArrows.includes(i) ? [0, 20, 0] : 0,
-                        y: clickedArrows.includes(i) ? [0, -10, 0] : 0,
-                        rotate: clickedArrows.includes(i) ? [0, 180, 360] : 0,
-                      }}
-                      transition={{
-                        duration: 0.8,
-                        ease: "easeInOut",
-                        times: clickedArrows.includes(i)
-                          ? [0, 0.5, 1]
-                          : undefined,
+                      style={{
+                        transform: clickedArrows.includes(i)
+                          ? "rotate(360deg)"
+                          : "rotate(0deg)",
+                        transition: "transform 0.8s ease-in-out",
                       }}
                     >
                       →
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
                 </Link>
               </div>
             </motion.div>
