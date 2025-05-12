@@ -7,7 +7,6 @@ type Job = {
   title: string;
   location: string;
   type: string;
-  applyLink: string;
 };
 
 const JobListingBar = () => {
@@ -29,7 +28,6 @@ const JobListingBar = () => {
             title: post.acf.job_title,
             location: post.acf.location,
             type: post.acf.job_type,
-            applyLink: post.acf.apply_link || "#",
           }));
 
         setJobListings(jobs);
@@ -42,6 +40,12 @@ const JobListingBar = () => {
 
     fetchJobs();
   }, []);
+
+  const getMailToLink = (jobTitle: string) => {
+    const email = "hr@bembex.com"; // Replace with your actual email
+    const subject = `Application for ${jobTitle}`;
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+  };
 
   if (loading) return <p className="text-white text-center">Loading jobs...</p>;
 
@@ -90,9 +94,7 @@ const JobListingBar = () => {
           </div>
 
           <a
-            href={job.applyLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={getMailToLink(job.title)}
             className="rounded-[115px] border border-[#DE2F04]
               bg-[rgba(222,47,4,0.10)]
               shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]

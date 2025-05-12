@@ -16,7 +16,6 @@ export default function PortfolioPage() {
   return (
     <main className="w-full overflow-hidden">
       <Portfoliohero />
-      <PortfolioGallery />
       <ProjectCard />
       <TestimonialsCarousel />
       <Foooter />

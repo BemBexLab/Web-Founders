@@ -1,14 +1,18 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
 interface Post {
   id: number;
+  slug: string;
   title: { rendered: string };
   acf?: {
     project_image?: { url: string };
-    project_url?: string;
+    catogary?: string | string[];
   };
 }
+
+const DRAG_THRESHOLD = 30;
 
 const GalleryCarousel = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -20,16 +24,26 @@ const GalleryCarousel = () => {
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+  const dragDelta = useRef(0);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const res = await fetch("/api/posts", { cache: "no-store" });
         const data = await res.json();
-        const projectPosts = data.filter(
-          (post: Post) => post.acf?.project_image?.url && post.acf?.project_url
-        );
-        setPosts(projectPosts);
+        const filtered = data.filter((post: Post) => {
+          const hasImage = post.acf?.project_image?.url;
+          const isWebDev =
+            post.acf?.catogary &&
+            (Array.isArray(post.acf.catogary)
+              ? post.acf.catogary.some(
+                  (cat) => cat.toLowerCase() === "web development"
+                )
+              : post.acf.catogary.toLowerCase() === "web development");
+
+          return hasImage && isWebDev;
+        });
+        setPosts(filtered);
       } catch (err) {
         console.error("Failed to load posts", err);
       }
@@ -65,29 +79,30 @@ const GalleryCarousel = () => {
     }
   }, [activeIndex]);
 
-  // ✅ Drag functionality to swipe between cards
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
     const handleMouseDown = (e: MouseEvent) => {
+      if (e.button !== 0) return;
       isDragging.current = true;
-      startX.current = e.pageX;
+      startX.current = e.pageX - carousel.offsetLeft;
       scrollLeft.current = carousel.scrollLeft;
+      dragDelta.current = 0;
       carousel.classList.add("dragging");
     };
 
-    const handleMouseUp = (e: MouseEvent) => {
+    const handleMouseUp = () => {
       if (!isDragging.current) return;
       isDragging.current = false;
       carousel.classList.remove("dragging");
 
-      const deltaX = e.pageX - startX.current;
-      if (Math.abs(deltaX) > 50) {
-        if (deltaX > 0) {
-          setActiveIndex((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
+      const moved = dragDelta.current;
+      if (Math.abs(moved) > DRAG_THRESHOLD) {
+        if (moved < 0) {
+          setActiveIndex((prev) => (prev + 1) % posts.length);
         } else {
-          setActiveIndex((prev) => (prev === posts.length - 1 ? 0 : prev + 1));
+          setActiveIndex((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
         }
       }
     };
@@ -95,8 +110,9 @@ const GalleryCarousel = () => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging.current) return;
       e.preventDefault();
-      const x = e.pageX;
-      const walk = (x - startX.current) * 1.5;
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = x - startX.current;
+      dragDelta.current = walk;
       carousel.scrollLeft = scrollLeft.current - walk;
     };
 
@@ -107,14 +123,14 @@ const GalleryCarousel = () => {
 
     carousel.addEventListener("mousedown", handleMouseDown);
     carousel.addEventListener("mouseup", handleMouseUp);
-    carousel.addEventListener("mousemove", handleMouseMove);
     carousel.addEventListener("mouseleave", handleMouseLeave);
+    carousel.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       carousel.removeEventListener("mousedown", handleMouseDown);
       carousel.removeEventListener("mouseup", handleMouseUp);
-      carousel.removeEventListener("mousemove", handleMouseMove);
       carousel.removeEventListener("mouseleave", handleMouseLeave);
+      carousel.removeEventListener("mousemove", handleMouseMove);
     };
   }, [posts.length]);
 
@@ -171,49 +187,41 @@ const GalleryCarousel = () => {
           className="flex gap-6 overflow-x-hidden scrollbar-hide snap-x snap-mandatory py-4 px-2 cursor-grab active:cursor-grabbing select-none"
         >
           {[...posts, ...posts].map((post, index) => {
-            const imageUrl =
-              post.acf?.project_image?.url || "/default-image.jpg";
-            const projectUrl = post.acf?.project_url || "#";
+            const imageUrl = post.acf?.project_image?.url || "/default.jpg";
             const actualIndex = index % posts.length;
 
             return (
-              <a
+              <Link
                 key={`${post.id}-${index}`}
-                href={projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/projects/${post.slug}`}
                 ref={(el) => {
                   if (actualIndex === index) {
                     itemsRef.current[actualIndex] = el;
                   }
                 }}
                 className={`relative min-w-[320px] sm:min-w-[360px] md:min-w-[400px] max-w-[420px] h-[260px] sm:h-[300px] md:h-[340px] 
-                  bg-[#0f0f0f] rounded-2xl overflow-hidden 
-                  shadow-xl border border-white/10 flex-shrink-0
-                  snap-center transition-all duration-300
+                  bg-black rounded-2xl overflow-hidden shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
                   ${
                     actualIndex === activeIndex
-                      ? "scale-105 border-[#ff4d2d]"
-                      : "scale-95 opacity-80"
-                  }
-                  hover:scale-105 hover:opacity-100 hover:border-[#ff4d2d]/60`}
+                      ? "scale-105 border-[#DE2F04]"
+                      : "scale-95 opacity-80 border-white/10"
+                  } hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60`}
               >
                 <img
                   src={imageUrl}
                   alt={post.title.rendered}
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white font-medium text-lg">
+                  <span className="text-white font-medium text-lg text-center">
                     {post.title.rendered}
                   </span>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
 
-        {/* Dots */}
         <div className="flex justify-center gap-2 mt-6">
           {posts.map((_, index) => (
             <button
@@ -221,7 +229,7 @@ const GalleryCarousel = () => {
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeIndex
-                  ? "w-8 bg-[#ff4d2d]"
+                  ? "w-8 bg-[#DE2F04]"
                   : "w-2 bg-white/30 hover:bg-white/50"
               }`}
             />

@@ -22,14 +22,16 @@ export default function Navbar() {
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-transparent px-4 md:px-10 py-4 flex justify-between items-center">
       {/* 🔰 Logo */}
-      <div className="flex items-center gap-2 ml-2 md:ml-6">
-        <Image
-          src="/Bembex-logo.png"
-          alt="Bembex Logo"
-          width={130}
-          height={50}
-        />
-      </div>
+      <Link href='/'>
+        <div className="flex items-center gap-2 ml-2 md:ml-6">
+          <Image
+            src="/Bembex-logo.png"
+            alt="Bembex Logo"
+            width={130}
+            height={50}
+          />
+        </div>
+      </Link>
 
       {/* 🌐 Desktop Nav Links */}
       <div className="hidden lg:block">
@@ -51,7 +53,7 @@ export default function Navbar() {
       </div>
 
       {/* 🚀 CTA Button (hidden on xs) */}
-      <Link href='/ContactUs'>
+      <Link href="/ContactUs">
         <div className="hidden sm:flex">
           <button className="rounded-full px-6 py-2 border-b-2 border-[#ff1e00] text-white bg-[#1a1a1a]/60 backdrop-blur-md flex items-center gap-2 shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_2px_6px_rgba(255,30,0,0.15)] hover:brightness-110 transition">
             Book a call <span className="text-xl">→</span>
