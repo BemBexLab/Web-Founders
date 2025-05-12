@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="relative w-full bg-[#0a0a11] text-white py-16 px-4 md:px-16 border-t border-t-white/10 border-b border-b-white/10">
@@ -34,11 +36,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-4 sm:gap-6 mb-6">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img
-              src="/Bembex-logo.png"
-              alt="Bembex Lab"
-              className="w-[150px] sm:w-[180px] object-contain"
-            />
+            <Link href="../">
+              <img
+                src="/Bembex-logo.png"
+                alt="Bembex Lab"
+                className="w-[150px] sm:w-[180px] object-contain"
+              />
+            </Link>
           </div>
 
           {/* Gradient Line */}
