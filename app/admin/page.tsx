@@ -1,4 +1,3 @@
-// AdminDashboard.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -26,10 +25,16 @@ export default function AdminDashboard() {
     if (!isAuthenticated) return;
 
     const fetchContacts = async () => {
-      const { data, error } = await supabase.from("contacts").select("*");
+      const { data, error } = await supabase
+        .from("contacts")
+        .select(
+          "first_name, last_name, email, phone, service, subject, message, submitted_at"
+        );
+
       if (error) {
         console.error("Error fetching contacts:", error);
       } else {
+        console.log("Fetched contacts:", data); // Debug output
         setContacts(data || []);
       }
       setLoading(false);
@@ -109,6 +114,7 @@ export default function AdminDashboard() {
                 <th className="p-2 border border-white">Service</th>
                 <th className="p-2 border border-white">Subject</th>
                 <th className="p-2 border border-white">Message</th>
+                <th className="p-2 border border-white">Time</th>
               </tr>
             </thead>
             <tbody>
@@ -125,6 +131,11 @@ export default function AdminDashboard() {
                   <td className="p-2 border border-white">{contact.service}</td>
                   <td className="p-2 border border-white">{contact.subject}</td>
                   <td className="p-2 border border-white">{contact.message}</td>
+                  <td className="p-2 border border-white">
+                    {contact.submitted_at
+                      ? new Date(contact.submitted_at).toLocaleString()
+                      : "N/A"}
+                  </td>
                 </tr>
               ))}
             </tbody>
