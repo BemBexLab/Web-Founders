@@ -56,9 +56,12 @@ const HeroWithStats = () => {
             </Link>
 
             <Link href="/portfolio">
-              <button className="flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full transition text-sm sm:text-base min-h-[48px] ">
-                <span className="w-12 h-12 flex items-center justify-center border border-[#ff4500] rounded-full hover:bg-[#DE2F04]">
-                  <FaPlay size={10} className="text-[#ff4500] hover:-[]" />
+              <button className="flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full transition text-sm sm:text-base min-h-[48px]">
+                <span className="group w-12 h-12 flex items-center justify-center border border-[#ff4500] rounded-full hover:bg-[#DE2F04]">
+                  <FaPlay
+                    size={10}
+                    className="text-[#ff4500] group-hover:text-white"
+                  />
                 </span>
                 <span>Explore Portfolio</span>
               </button>
