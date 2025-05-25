@@ -3,34 +3,47 @@ import Link from "next/link";
 
 export default function ContactUsSection() {
   return (
-    <section className="bg-[#0A0A11] py-16 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between">
-      {/* Left Side - Content */}
-      <div className="w-full sm:w-1/2 text-white sm:ml-12 mb-8 sm:mb-0 mt-14">
-        {" "}
-        {/* Added margin-left for larger screens and margin-bottom for mobile */}
-        <h1 className="text-4xl sm:text-7xl font-extrabold leading-tight mb-4 text-white">
-          Let's Start Something Great Together
-        </h1>
-        <p className="text-white/70 text-lg sm:text-xl mb-6">
-          Reach out to us today and let's make amazing things happen!
-        </p>
-        <Link href='#contactform'>
-          <button className="bg-[#FF3C1B] text-white px-6 py-3 rounded-[75px] font-semibold border-2 border-[#DE2F04] bg-opacity-10 backdrop-blur-md shadow-lg hover:shadow-xl hover:bg-opacity-20 transition-all duration-300">
-            Book a call →
-          </button>
-        </Link>
-      </div>
-
-      {/* Right Side - Image */}
-      <div className="w-full sm:w-1/2 flex justify-center sm:justify-end">
-        <Image
-          src="/Chat-1.png" // Replace with your image path
-          alt="Contact Us"
-          width={550}
-          height={550}
-          className="object-cover w-full sm:w-[450px] h-auto" // Adjusted image size to be more responsive
-        />
-      </div>
-    </section>
+    <section className="bg-white flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-16 mt-16 gap-12">
+          {/* Left Side - Content */}
+          <div className="w-full sm:w-1/2 text-[#002768] pl-4 sm:pl-12">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+             Let's Start <span className="text-black">Something Great</span> Together
+            </h2>
+    
+            <p className="text-base sm:text-lg lg:text-xl mb-6" style={{ color: "rgba(31, 31, 31, 0.50)" }}>
+              Reach out to us today and let's make amazing things happen!
+            </p>
+    
+            <button
+      className="px-5 sm:px-6 py-3 text-white text-sm hover:brightness-110 transition"
+      style={{
+        borderRadius: "75px",
+        border: "1px solid #002768",
+        background: "#002768",
+        boxShadow: `
+          9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset,
+          -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset
+        `,
+        backdropFilter: "blur(9.137930870056152px)",
+        WebkitBackdropFilter: "blur(9.137930870056152px)",
+      }}
+    >
+      Book a call →
+    </button>
+          </div>
+    
+          {/* Right Side - Image */}
+          <div className="w-full sm:w-1/2 flex justify-center">
+            <div className="relative w-full max-w-[400px] aspect-[4/3] sm:max-w-[500px] sm:aspect-[1/1]">
+              <Image
+                src="/career/Rectangle 28 (2).svg"
+                alt="Large Bag"
+                layout="fill"
+                objectFit="contain" // Ensures the image scales fully
+                priority
+              />
+            </div>
+          </div>
+        </section>
   );
 }

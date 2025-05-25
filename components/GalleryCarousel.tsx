@@ -142,10 +142,10 @@ const GalleryCarousel = () => {
 
   return (
     <section className="w-full py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
-      <p className="text-[#ff4d2d] font-semibold mb-2">Our Portfolio</p>
-      <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-10 leading-tight">
+      <p className="text-[#BF0B30] font-semibold mb-2">Our Portfolio</p>
+      <h2 className="text-[#1F1F1F] text-3xl sm:text-4xl md:text-5xl font-bold mb-10 leading-tight">
         Our{" "}
-        <span className="bg-gradient-to-r from-[#ff4d2d] to-white text-transparent bg-clip-text">
+        <span className="text-black">
           Previous Work
         </span>
       </h2>

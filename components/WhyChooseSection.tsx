@@ -10,7 +10,7 @@ const WhyChooseUs = () => {
         <div className="w-full lg:w-1/2">
           <div className="rounded-2xl overflow-hidden">
             <Image
-              src="/Rectangle.png"
+              src="/mainpage/Rectangle 8.svg"
               alt="Why Bembexlab"
               width={700}
               height={450}
@@ -22,10 +22,19 @@ const WhyChooseUs = () => {
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-6 px-2 gap-4 sm:gap-0">
             {/* Left Tag */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center border border-red-700 text-[#ff4d2d]">
-                <FaGem size={18} />
-              </div>
-              <span className="text-white font-semibold text-base sm:text-lg">
+             <div
+  className="w-10 h-10 flex items-center justify-center text-white"
+  style={{
+    borderRadius: "75px",
+    border: "1px solid #BF0B30",
+    background: "#002768",
+  }}
+>
+  <FaGem size={18} />
+</div>
+
+
+              <span className="text-[#1F1F1F] font-semibold text-base sm:text-lg">
                 Quality Assurance
               </span>
             </div>
@@ -35,10 +44,18 @@ const WhyChooseUs = () => {
 
             {/* Right Tag */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center border border-red-700 text-[#ff4d2d]">
-                <LuBadgeCheck size={18} />
-              </div>
-              <span className="text-white font-semibold text-base sm:text-lg">
+              <div
+  className="w-10 h-10 flex items-center justify-center text-white"
+  style={{
+    borderRadius: "75px",
+    border: "1px solid #BF0B30",
+    background: "#002768",
+  }}
+>
+  <LuBadgeCheck size={18} />
+</div>
+
+              <span className="text-[#1F1F1F] font-semibold text-base sm:text-lg">
                 Professional Support
               </span>
             </div>
@@ -47,25 +64,25 @@ const WhyChooseUs = () => {
 
         {/* ✍️ Right Text Column */}
         <div className="w-full lg:w-1/2">
-          <p className="text-[#ff4d2d] font-semibold mb-3 text-sm sm:text-base">
+          <p className="text-[#BF0B30] font-semibold mb-3 text-sm sm:text-base">
             Why Choose Bembex lab?
           </p>
-          <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.3] mb-6 space-y-2">
+          <h2 className="text-[#1F1F1F] font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.3] mb-6 space-y-2">
             <div>
               Cr
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">
                 af
               </span>
               ting Exceptional
             </div>
             <div>
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">
                 Ex
               </span>
               periences, Delivering
             </div>
             <div>
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">
                 S
               </span>
               uccess

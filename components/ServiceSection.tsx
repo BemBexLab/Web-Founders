@@ -102,53 +102,48 @@ const ServicesSection = () => {
             },
           }}
         >
-          <p className="text-[#ff4d2d] font-semibold mb-3 text-sm sm:text-base">
+          <p className="text-[#BF0B30] font-semibold mb-3 text-sm sm:text-base">
             Our Services
           </p>
-          <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.35] mb-8">
+          <h2 className="text-[#1F1F1F] font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.35] mb-8">
             <div>
-              <span className="text-white">E</span>
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">E</span>
+              <span className="">
                 xp
               </span>{" "}
               Website
             </div>
             <div>
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">
                 De
               </span>
               velopment &
             </div>
             <div>
-              <span className="bg-gradient-to-b from-white via-[#ffecd3] to-[#5a2e1b] text-transparent bg-clip-text">
+              <span className="">
                 D
               </span>
               esign Solutions
             </div>
           </h2>
           <Link href="Services">
-            <motion.button
-              className="relative px-6 py-3 rounded-full text-white text-sm flex items-center gap-2 bg-[#1a1a1a]/60 backdrop-blur-md border border-transparent group overflow-hidden"
-              whileHover={{
-                borderColor: "rgba(255, 60, 27, 0.3)",
-                boxShadow: "0 0 15px rgba(255, 60, 27, 0.3)",
-              }}
-            >
-              <span className="relative z-10">See All Services</span>
-              <motion.span
-                className="text-lg relative z-10"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 500 }}
-              >
-                →
-              </motion.span>
-              <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ff3c1b]/10 to-transparent opacity-0"
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <span className="absolute inset-0 rounded-full shadow-[inset_0_4px_6px_rgba(255,255,255,0.08)]" />
-            </motion.button>
+            <button
+  className="px-5 sm:px-6 py-3 text-whoite text-sm hover:brightness-110 transition"
+  style={{
+    borderRadius: "75px",
+    border: "1px solid #002768",
+    background: "#002768",
+    boxShadow: `
+      9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset,
+      -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset
+    `,
+    backdropFilter: "blur(9.137930870056152px)",
+    WebkitBackdropFilter: "blur(9.137930870056152px)",
+  }}
+>
+  Book a call →
+</button>
+
           </Link>
         </motion.div>
 
@@ -180,7 +175,7 @@ const ServicesSection = () => {
                 </AnimatePresence>
 
                 {/* Text */}
-                <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] text-white leading-none">
+                <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] text-[#111111] leading-none">
                   {item}
                 </div>
               </div>

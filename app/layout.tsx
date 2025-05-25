@@ -27,7 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} bg-black text-white overflow-x-hidden`}
+        className={`${inter.className} bg-white text-white overflow-x-hidden`}
       >
         <ThemeProvider
           attribute="class"

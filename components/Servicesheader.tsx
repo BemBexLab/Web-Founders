@@ -5,40 +5,51 @@ import Link from "next/link";
 
 const ServicesHeader = () => {
   return (
-    <section className="relative bg-[#0A0A11] text-white  overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
-        {/* 🔸 Left Side: Text */}
-        <div className="text-center lg:text-left z-10 px-6 lg:px-20 py-20 max-w-7xl mx-auto mt-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-            <span className="bg-gradient-to-r from-[#ffb199] to-white text-transparent bg-clip-text">
-              Your
-            </span>{" "}
-            brand.
-            <br />
-            <span className="bg-gradient-to-r from-[#ffb199] to-white text-transparent bg-clip-text">
-              Your
-            </span>{" "}
-            success.
+    <section className="min-h-screen bg-white text-white px-4 sm:px-6 lg:px-20 pt-20 lg:pt-24 pb-24 flex items-center">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        {/* ✅ Left Side: Text Content */}
+        <div className="text-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-[#002768]">
+           Your Brand. <br /> Your Success.
           </h1>
-          <p className="text-white/70 text-sm sm:text-base md:text-lg mb-8">
-            Brand agency for strategy, design and interaction from Munich
-          </p>
+
+         <p
+  className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl"
+  style={{ color: "rgba(31, 31, 31, 0.5)" }}
+>
+  Brand agency for strategy, design and interaction from Munich.
+</p>
+
+
           <Link href="/ContactUs">
-            <button className="rounded-full px-6 py-3 text-white text-sm bg-[#1a1a1a]/60 border border-[#ff4d2d] backdrop-blur-md hover:brightness-110 transition shadow-[0_0_12px_#ff1e00aa]">
-              Book a call →
-            </button>
+            <button
+  className="px-5 sm:px-6 py-3 text-whoite text-sm hover:brightness-110 transition"
+  style={{
+    borderRadius: "75px",
+    border: "1px solid #002768",
+    background: "#002768",
+    boxShadow: `
+      9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset,
+      -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset
+    `,
+    backdropFilter: "blur(9.137930870056152px)",
+    WebkitBackdropFilter: "blur(9.137930870056152px)",
+  }}
+>
+  Book a call  →
+</button>
           </Link>
         </div>
 
-        {/* 🔹 Right Side: Gears Image */}
-        <div className="flex justify-center lg:justify-end relative ">
-          <div className="w-full max-w-[600px]">
+        {/* ✅ Right Side: Image */}
+        <div className="flex justify-center lg:justify-end">
+          <div className="w-full max-w-[400px] sm:max-w-[480px] md:max-w-[550px] xl:max-w-[650px]">
             <Image
-              src="/Group 21.png" // or your image path
-              alt="Service Gears"
+              src="/service/image (10).svg"
+              alt="Swirl Graphic"
               width={800}
               height={800}
-              className="w-full h-auto object-cover ml-auto"
+              className="rounded-2xl object-cover w-full h-auto"
               priority
             />
           </div>

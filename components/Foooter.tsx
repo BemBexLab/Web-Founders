@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-[#0a0a11] text-white py-16 px-4 md:px-16 border-t border-t-white/10 border-b border-b-white/10">
+    <footer className="relative w-full bg-white text-white py-16 px-4 md:px-16 border-t border-t-black border-b border-b-white/10">
       {/* Background Accent SVG */}
       <div className="absolute left-0 top-0 w-[300px] h-full opacity-[0.06] pointer-events-none z-0">
         <svg
@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="flex-shrink-0">
             <Link href="../">
               <img
-                src="/Bembex-logo.png"
+                src="/navbar/image (3).svg"
                 alt="Bembex Lab"
                 className="w-[150px] sm:w-[180px] object-contain"
               />
@@ -50,30 +50,29 @@ const Footer = () => {
 
           {/* Menu */}
           <div
-            className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm backdrop-blur-[9.14px] flex flex-wrap justify-between md:justify-center md:gap-16"
-            style={{
-              border: "1px solid #DE2F04",
-              background: "rgba(222, 47, 4, 0.10)",
-              boxShadow:
-                "9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset, -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset",
-            }}
-          >
-            <a href="/Packages" className="hover:text-[#ff4d2d] transition">
-              Pricing
-            </a>
-            <a href="/ContactUs" className="hover:text-[#ff4d2d] transition">
-              Contact us
-            </a>
-            <a href="/Terms" className="hover:text-[#ff4d2d] transition">
-              Terms
-            </a>
-            <a
-              href="/PrivacyandPolicy"
-              className="hover:text-[#ff4d2d] transition"
-            >
-              Privacy
-            </a>
-          </div>
+  className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm flex flex-wrap justify-between md:justify-center md:gap-16"
+  style={{
+    background: "#002768",
+
+  }}
+>
+  <a href="/Packages" className=" transition text-white">
+    Pricing
+  </a>
+  <a href="/ContactUs" className=" transition text-white">
+    Contact us
+  </a>
+  <a href="/Terms" className="transition text-white">
+    Terms
+  </a>
+  <a
+    href="/PrivacyandPolicy"
+    className=" transition text-white"
+  >
+    Privacy
+  </a>
+</div>
+
         </div>
 
         {/* Divider */}
@@ -87,8 +86,7 @@ const Footer = () => {
               className="p-3"
               style={{
                 borderRadius: "76.415px",
-                border: "1.141px solid #DE2F04",
-                background: "rgba(222, 47, 4, 0.20)",
+                background: "#002768",
               }}
             >
               <img
@@ -97,7 +95,7 @@ const Footer = () => {
                 className="w-5 h-5"
               />
             </div>
-            <span className="text-white font-medium text-sm sm:text-[17px]">
+            <span className="text-[#1F1F1F] font-medium text-sm sm:text-[17px]">
               +92(314)-2518727
             </span>
           </div>
@@ -108,8 +106,7 @@ const Footer = () => {
               className="p-3"
               style={{
                 borderRadius: "76.415px",
-                border: "1.141px solid #DE2F04",
-                background: "rgba(222, 47, 4, 0.20)",
+                background: "#002768",
               }}
             >
               <img
@@ -118,7 +115,7 @@ const Footer = () => {
                 className="w-5 h-5"
               />
             </div>
-            <span className="text-white font-medium text-sm sm:text-[17px]">
+            <span className="text-[#1F1F1F] font-medium text-sm sm:text-[17px]">
               hr@bembexlab.com
             </span>
           </div>
@@ -129,13 +126,12 @@ const Footer = () => {
               className="p-3 flex-shrink-0"
               style={{
                 borderRadius: "76.415px",
-                border: "1.141px solid #DE2F04",
-                background: "rgba(222, 47, 4, 0.20)",
+                background: "#002768",
               }}
             >
               <img src="/Group.png" alt="Location" className="w-5 h-5" />
             </div>
-            <div className="text-white font-medium text-sm sm:text-[17px] leading-snug break-words">
+            <div className="text-[#1F1F1F] font-medium text-sm sm:text-[17px] leading-snug break-words">
               68 CIRCULAR ROAD, #02-01,
               <br className="block sm:hidden" />
               SINGAPORE 049422
@@ -147,7 +143,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mb-6"></div>
 
         {/* Copyright */}
-        <p className="text-center text-white/80 text-xs sm:text-sm md:text-base">
+        <p className="text-center text-[#1F1F1F] text-xs sm:text-sm md:text-base">
           &copy; 2025 Bembex Lab. All rights reserved.
         </p>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -64,8 +65,6 @@ const TestimonialsCarousel = () => {
 
   return (
     <section className="relative w-full py-20 px-4 md:px-8 max-w-[100vw] mx-auto overflow-hidden">
-      {/* ... keep your SVGs, backgrounds, particles, headings, and card rendering unchanged ... */}
-
       <div className="relative mx-auto max-w-4xl h-[450px] perspective-1000 z-10">
         <div
           ref={carouselRef}
@@ -74,15 +73,14 @@ const TestimonialsCarousel = () => {
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className={`absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-1000 preserve-3d backface-hidden
-                ${
-                  activeIndex === index
-                    ? "opacity-100 z-10 scale-100"
-                    : "opacity-0 -z-10 scale-90"
-                }`}
+              className={`absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-1000 preserve-3d backface-hidden ${
+                activeIndex === index
+                  ? "opacity-100 z-10 scale-100"
+                  : "opacity-0 -z-10 scale-90"
+              }`}
             >
-              <div className="bg-gradient-to-br from-[#250808]/90 to-[#0f0000]/95 border border-[#b02010] rounded-2xl p-8 w-full max-w-md shadow-2xl backdrop-blur-lg transform transition-all duration-500 hover:shadow-[#ff4d2d]/30 hover:shadow-xl">
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#ff4d2d] to-[#b02010] p-1 rounded-full">
+              <div className="bg-white rounded-2xl p-8 w-full max-w-md transform transition-all duration-500 shadow-xl">
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 p-1 rounded-full">
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -93,8 +91,8 @@ const TestimonialsCarousel = () => {
                 </div>
 
                 <div className="text-center mt-12 mb-6">
-                  <p className="font-bold text-white text-lg">{item.name}</p>
-                  <p className="text-sm text-white/60">{item.company}</p>
+                  <p className="font-bold text-black text-lg">{item.name}</p>
+                  <p className="text-sm text-black/60">{item.company}</p>
                 </div>
 
                 <div className="relative">
@@ -106,7 +104,7 @@ const TestimonialsCarousel = () => {
                   >
                     <path d="M11.192 15.757..." />
                   </svg>
-                  <p className="text-white/80 text-base leading-relaxed mb-6 px-4">
+                  <p className="text-black/80 text-base leading-relaxed mb-6 px-4">
                     {item.message}
                   </p>
                   <svg
@@ -120,8 +118,8 @@ const TestimonialsCarousel = () => {
                 </div>
 
                 <div className="flex justify-center mt-6">
-                  <div className="px-4 py-2 rounded-full bg-[#1c0b0b]/50 border border-[#ff4d2d] backdrop-blur-md animate-pulse-slow">
-                    <div className="flex items-center gap-1 text-[#ff4d2d] text-base">
+                  <div className="px-4 py-2 rounded-full bg-[#002768]">
+                    <div className="flex items-center gap-1 text-white text-base">
                       {[...Array(5)].map((_, i) => (
                         <span
                           key={i}
@@ -148,7 +146,7 @@ const TestimonialsCarousel = () => {
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 activeIndex === index
                   ? "bg-[#ff4d2d] w-8"
-                  : "bg-white/30 hover:bg-white/50"
+                  : "bg-black/20 hover:bg-black/40"
               }`}
               aria-label={`View testimonial ${index + 1}`}
             />
@@ -181,9 +179,7 @@ const TestimonialsCarousel = () => {
         </button>
 
         <button
-          onClick={() =>
-            handleManualChange((activeIndex + 1) % testimonials.length)
-          }
+          onClick={() => handleManualChange((activeIndex + 1) % testimonials.length)}
           className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 sm:translate-x-0 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 border border-[#ff4d2d]/30 hover:border-[#ff4d2d] z-20"
           aria-label="Next testimonial"
         >

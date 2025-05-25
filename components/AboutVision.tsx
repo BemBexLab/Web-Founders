@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const OurVision = () => {
   return (
-    <section className="relative bg-[#0A0A11] px-4 sm:px-6 lg:px-20 py-16 sm:py-20 overflow-hidden">
+    <section className="relative bg-white px-4 sm:px-6 lg:px-20 py-16 sm:py-20 overflow-hidden">
       {/* 🔴 Subtle Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#FF3C1B11] via-transparent to-[#ffffff08] z-0" />
 
@@ -13,7 +13,7 @@ const OurVision = () => {
         {/* 📸 Left Image */}
         <div className="w-full max-w-[500px] sm:max-w-[550px] md:max-w-[600px] mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="/Rectangle-0.png"
+            src="/aboutus/Rectangle 20.svg"
             alt="Vision Graphic"
             width={600}
             height={600}
@@ -24,21 +24,21 @@ const OurVision = () => {
 
         {/* 📝 Right Content */}
         <div className="text-white">
-          <p className="text-[#FF3C1B] text-sm font-semibold mb-3">
+          <p className="text-[#BF0B30] text-sm font-semibold mb-3">
             Our Vision
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-            <span className="bg-gradient-to-r from-[#ffb199] to-white text-transparent bg-clip-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-[#002768]">
+            <span className="">
               What
             </span>{" "}
             We Are Trying To
             <br />
-            <span className="bg-gradient-to-r from-[#ffb199] to-white text-transparent bg-clip-text">
+            <span className="">
               Ac
             </span>
             complish.
           </h2>
-          <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: "rgba(31, 31, 31, 0.5)" }}>
             We are committed to delivering exceptional digital experiences that
             help businesses thrive in a competitive online landscape. By
             combining creativity, technology, and strategy, we focus on building

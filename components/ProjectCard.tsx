@@ -59,34 +59,35 @@ const ProjectCardGrid = () => {
   }, []);
 
   return (
-    <section className="w-full py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto bg-[#0A0A11] text-white">
+    <section className="w-full py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto bg-white text-white">
       {/* Section Heading */}
-      <p className="text-[#DE2F04] font-semibold mb-2 text-center">
+      <p className="text-[#002768] font-semibold mb-2 text-center">
         Featured Projects
       </p>
-      <h2 className="text-white text-4xl sm:text-5xl font-bold mb-10 leading-tight text-center">
+      <h2 className="text-black text-4xl sm:text-5xl font-bold mb-10 leading-tight text-center">
         Our{" "}
-        <span className="bg-gradient-to-r from-[#DE2F04] to-white text-transparent bg-clip-text">
+        <span className="text-black">
           Portfolio
         </span>
       </h2>
 
       {/* Category Filter Buttons */}
-      <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {categories.map((label) => (
-          <span
-            key={label}
-            onClick={() => setSelectedCategory(label)}
-            className={`px-4 py-1.5 text-sm sm:text-base rounded-full border backdrop-blur-md cursor-pointer transition shadow-[0_0_8px_#ff1e00aa] ${
-              selectedCategory === label
-                ? "bg-[#DE2F04] border-[#DE2F04] text-white"
-                : "bg-[#1a1a1a]/60 border-[#ff4d2d] hover:brightness-110"
-            }`}
-          >
-            {label}
-          </span>
-        ))}
-      </div>
+<div className="flex flex-wrap justify-center gap-4 mb-12">
+  {categories.map((label) => (
+    <span
+      key={label}
+      onClick={() => setSelectedCategory(label)}
+      className={`px-4 py-1.5 text-sm sm:text-base rounded-full border cursor-pointer transition ${
+        selectedCategory === label
+          ? "bg-[#002768] border-[#002768] text-white"
+          : "bg-[rgba(0,39,104,0.20)] border-[#002768] text-[#1F1F1F] hover:brightness-110"
+      }`}
+    >
+      {label}
+    </span>
+  ))}
+</div>
+
 
       {/* Projects Grid or Loading Message */}
       {posts.length === 0 ? (

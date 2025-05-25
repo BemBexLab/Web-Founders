@@ -53,18 +53,18 @@ export default function ContactUsSection() {
   };
 
   return (
-    <section className="bg-[#0A0A11] py-16 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between">
+    <section className="bg-white py-16 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between">
       {/* Left Side - Contact Information */}
       <div className="w-full sm:w-1/2 text-white ml-0 sm:ml-12 mb-12 sm:mb-0">
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#DE2F04] mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#BF0B30] mb-4">
           Contact us
         </h1>
-        <h2 className="text-4xl sm:text-6xl font-extrabold leading-tight mb-6">
+        <h2 className="text-4xl sm:text-6xl font-extrabold leading-tight mb-6 text-[#002768]">
           Get In Touch
         </h2>
 
         <div className="flex items-center space-x-6 mb-6">
-          <div className="relative bg-[#DE2F04] rounded-full p-6">
+          <div className="relative bg-[#BF0B30] rounded-full p-6">
             <Image
               src="/material-symbols_call (1).png"
               alt="Phone Icon"
@@ -73,11 +73,11 @@ export default function ContactUsSection() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             />
           </div>
-          <span className="text-lg">+1 470-469-7096 | +92 310 6411092</span>
+          <span className="text-lg text-[#002768]">+1 470-469-7096 | +92 310 6411092</span>
         </div>
 
         <div className="flex items-center space-x-6 mb-6">
-          <div className="relative bg-[#DE2F04] rounded-full p-6">
+          <div className="relative bg-[#BF0B30] rounded-full p-6">
             <Image
               src="/ic_baseline-email (1).png"
               alt="Email Icon"
@@ -86,11 +86,11 @@ export default function ContactUsSection() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             />
           </div>
-          <span className="text-lg">hr@bembexlab.com</span>
+          <span className="text-lg text-[#002768]">hr@bembexlab.com</span>
         </div>
 
         <div className="flex items-center space-x-6 mb-6">
-          <div className="relative bg-[#DE2F04] rounded-full p-6">
+          <div className="relative bg-[#BF0B30] rounded-full p-6">
             <Image
               src="/mdi_location.png"
               alt="Location Icon"
@@ -99,14 +99,14 @@ export default function ContactUsSection() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             />
           </div>
-          <span className="text-lg">
+          <span className="text-lg text-[#002768]">
             1014 Garner Rd SW, Lilburn, GA 30047, USA
           </span>
         </div>
       </div>
 
       {/* Right Side - Contact Form */}
-      <div className="w-full sm:w-1/2 bg-[#1F1F1F] p-8 rounded-lg shadow-xl border-2 border-[#DE2F04] bg-opacity-20 backdrop-blur-md">
+      <div className="w-full sm:w-1/2 bg-white p-8 rounded-lg shadow-xl border-2 border-[#002768] bg-opacity-20 backdrop-blur-md">
         <h2 className="text-3xl text-white mb-6">Contact Form</h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
@@ -115,7 +115,7 @@ export default function ContactUsSection() {
               value={form.first_name}
               onChange={handleChange}
               type="text"
-              className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04] mb-4 sm:mb-0"
+              className="w-full sm:w-1/2 p-3 rounded-lg bg-white text-white border-2 border-[#002768] mb-4 sm:mb-0"
               placeholder="First Name"
               required
             />
@@ -124,7 +124,7 @@ export default function ContactUsSection() {
               value={form.last_name}
               onChange={handleChange}
               type="text"
-              className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
+              className="w-full sm:w-1/2 p-3 rounded-lg bg-white text-white border-2 border-[#002768]"
               placeholder="Last Name"
               required
             />
@@ -135,7 +135,7 @@ export default function ContactUsSection() {
               value={form.email}
               onChange={handleChange}
               type="email"
-              className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04] mb-4 sm:mb-0"
+              className="w-full sm:w-1/2 p-3 rounded-lg bg-white text-white border-2 border-[#002768] mb-4 sm:mb-0"
               placeholder="Email"
               required
             />
@@ -144,7 +144,7 @@ export default function ContactUsSection() {
               value={form.phone}
               onChange={handleChange}
               type="tel"
-              className="w-full sm:w-1/2 p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
+              className="w-full sm:w-1/2 p-3 rounded-lg bg-white text-white border-2 border-[#002768]"
               placeholder="Phone number"
               required
             />
@@ -154,7 +154,7 @@ export default function ContactUsSection() {
               name="service"
               value={form.service}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
+              className="w-full p-3 rounded-lg bg-white text-white border-2 border-[#002768]"
               required
             >
               <option value="">Select services</option>
@@ -170,7 +170,7 @@ export default function ContactUsSection() {
               value={form.subject}
               onChange={handleChange}
               type="text"
-              className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
+              className="w-full p-3 rounded-lg bg-white text-white border-2 border-[#002768]"
               placeholder="Subject"
               required
             />
@@ -180,7 +180,7 @@ export default function ContactUsSection() {
               name="message"
               value={form.message}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-[#2E2E2E] text-white border-2 border-[#DE2F04]"
+              className="w-full p-3 rounded-lg bg-white text-white border-2 border-[#002768]"
               placeholder="Details"
               required
             />
@@ -188,7 +188,7 @@ export default function ContactUsSection() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-[#DE2F04] text-white px-6 py-3 rounded-[75px] font-semibold border-2 border-[#DE2F04] bg-opacity-10 backdrop-blur-md shadow-lg hover:shadow-xl hover:bg-opacity-20 transition-all duration-300"
+            className="bg-[#002768] text-white px-6 py-3 rounded-[75px] font-semibold border-2 border-[#002768]  shadow-lg hover:shadow-xl hover:bg-opacity-20 transition-all duration-300"
           >
             {isSubmitting ? "Sending..." : "Send Message →"}
           </button>
