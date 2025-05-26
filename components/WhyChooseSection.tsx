@@ -26,7 +26,6 @@ const WhyChooseUs = () => {
   className="w-10 h-10 flex items-center justify-center text-white"
   style={{
     borderRadius: "75px",
-    border: "1px solid #BF0B30",
     background: "#002768",
   }}
 >
@@ -48,7 +47,6 @@ const WhyChooseUs = () => {
   className="w-10 h-10 flex items-center justify-center text-white"
   style={{
     borderRadius: "75px",
-    border: "1px solid #BF0B30",
     background: "#002768",
   }}
 >
@@ -65,9 +63,9 @@ const WhyChooseUs = () => {
         {/* ✍️ Right Text Column */}
         <div className="w-full lg:w-1/2">
           <p className="text-[#BF0B30] font-semibold mb-3 text-sm sm:text-base">
-            Why Choose Bembex lab?
+            Why Choose Web Founders?
           </p>
-          <h2 className="text-[#1F1F1F] font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.3] mb-6 space-y-2">
+          <h2 className="text-[#1F1F1F] font-normal text-3xl sm:text-4xl md:text-5xl leading-[1.3] mb-6 space-y-2">
             <div>
               Cr
               <span className="">

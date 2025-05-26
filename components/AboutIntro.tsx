@@ -2,14 +2,14 @@
 
 const AboutIntro = () => {
   return (
-    <section className="bg-white text-white px-4 sm:px-6 lg:px-20 py-16 sm:py-20 border-t border-b border-white/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-start">
+    <section className="bg-white text-white px-4 sm:px-6 lg:px-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-start border-t-[1px] border-gray-400 border-b-[1px] py-10">
         {/* 🔸 Left Content */}
         <div>
           <p className="text-[#BF0B30] text-sm font-semibold mb-3 sm:mb-4">
             About us
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-[#002768]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-6 text-[#002768]">
             <span className="">
               Discover Bembexlab
             </span>
@@ -37,6 +37,7 @@ const AboutIntro = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

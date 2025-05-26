@@ -6,19 +6,18 @@ import Link from "next/link";
 const AboutHeader = () => {
   return (
     <section className="min-h-screen bg-white text-white px-4 sm:px-6 lg:px-20 pt-20 lg:pt-24 pb-24 flex items-center">
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="w-full  mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* ✅ Left Side: Text Content */}
         <div className="text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-[#002768]">
-           Passionate About Website Development.
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-black">
+           <span className="text-[#002768]">Passionate</span> About Website <span className="text-[#002768]">Development.</span>
           </h1>
 
-         <p
-  className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl"
-  style={{ color: "rgba(31, 31, 31, 0.5)" }}
->
-  We craft visually stunning, user-centric websites that drive results. From modern design to seamless functionality, Help businesses stand out in the digital world.
-</p>
+         <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl"
+            style={{ color: "rgba(31, 31, 31, 0.5)" }}
+          >
+             We craft visually stunning, user-centric websites that drive results. From modern design to seamless functionality, Help businesses stand out in the digital world.
+         </p>
 
 
           <Link href="/ContactUs">

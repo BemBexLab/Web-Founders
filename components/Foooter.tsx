@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-white text-white py-16 px-4 md:px-16 border-t border-t-black border-b border-b-white/10">
+    <footer className="relative w-full bg-white text-white py-16 px-4 md:px-16 ">
       {/* Background Accent SVG */}
       <div className="absolute left-0 top-0 w-[300px] h-full opacity-[0.06] pointer-events-none z-0">
         <svg
@@ -31,9 +31,9 @@ const Footer = () => {
       </div>
 
       {/* Footer Content */}
-      <div className="relative z-10 max-w-screen-xl px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="relative z-10 max-w-screen-xl px-4 sm:px-6 lg:px-8 mx-auto ">
         {/* Logo Row */}
-        <div className="flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-4 sm:gap-6 mb-6">
+        <div className="flex flex-col md:flex-row md:flex-wrap items-start md:items-center gap-4 sm:gap-6 mb-6 border-t-[1px] border-b-[1px] border-gray-400 py-10">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="../">
@@ -46,11 +46,11 @@ const Footer = () => {
           </div>
 
           {/* Gradient Line */}
-          <div className="hidden md:block md:flex-1 h-[1.4px] bg-gradient-to-r from-[#DE2F04] to-[#000011]"></div>
+          <div className="hidden md:block md:flex-1 h-[1.4px] bg-gradient-to-r from-[#FDFDFD] to-[#BF0B30]"></div>
 
           {/* Menu */}
           <div
-  className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm flex flex-wrap justify-between md:justify-center md:gap-16"
+  className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm flex flex-wrap justify-between md:justify-center md:gap-16 "
   style={{
     background: "#002768",
 
@@ -79,7 +79,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mb-8"></div>
 
         {/* Contact Section */}
-        <div className="flex flex-col md:flex-row md:flex-wrap justify-between items-start md:items-center gap-6 mb-10">
+        <div className="flex flex-col md:flex-row md:flex-wrap justify-between items-start md:items-center gap-6 mb-10 border-b-[1px] border-gray-600 pb-14">
           {/* Phone */}
           <div className="flex items-center gap-3 flex-1 min-w-[250px]">
             <div
@@ -144,7 +144,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="text-center text-[#1F1F1F] text-xs sm:text-sm md:text-base">
-          &copy; 2025 Bembex Lab. All rights reserved.
+          &copy; 2025 Web Founders. All rights reserved.
         </p>
       </div>
     </footer>

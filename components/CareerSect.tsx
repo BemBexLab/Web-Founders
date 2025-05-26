@@ -58,7 +58,7 @@ const JobListingBar = () => {
         </h1>
       </div>
 
-      <div className="mt-8" />
+      <div/>
 
       {/* Job Listings or Loading */}
       {loading ? (
@@ -118,7 +118,7 @@ const JobListingBar = () => {
         })
       )}
 
-      <div className="mt-8" />
+      <div />
     </div>
   );
 };

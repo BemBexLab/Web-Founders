@@ -4,81 +4,86 @@ import Link from "next/link";
 
 const HeroWithStats = () => {
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* 🎥 Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        src="/"
-        autoPlay
-        loop
-        muted
-        playsInline
+    <section className="mt-10  ">
+      {/* 🎥 Background Image */}
+      <Image
+        src="/mainpage/Home.svg"
+        alt="Background"
+        fill
+        priority
+        className="object-cover z-0"
       />
 
       {/* 🔲 Dark Overlay */}
-      <div className="absolute inset-0 bg-[#FDFDFD] z-10" />
+      <div className="absolute inset-0  z-10" />
 
       {/* ✨ Hero Content */}
-      <div className="relative z-30 flex items-center justify-center min-h-screen px-4 text-white text-center">
-        <div className="w-full max-w-5xl px-4">
-          <h1
-  style={{
-    textAlign: "center",
-    fontFamily: "Montserrat, sans-serif",
-    fontSize: "90px",
-    fontStyle: "normal",
-    fontWeight: 600,
-    lineHeight: "101px",
-  }}
->
-  <span style={{ color: "#000000" }}>Expert </span>
-  <span
-    style={{
-      WebkitTextStrokeWidth: "2px",
-      WebkitTextStrokeColor: "#002768",
-      WebkitTextFillColor: "transparent",
-      color: "transparent",
-      display: "inline-block",
-    }}
-  >
-    Website
-  </span>
-  <br />
-  <span
-    style={{
-      WebkitTextStrokeWidth: "2px",
-      WebkitTextStrokeColor: "#002768",
-      WebkitTextFillColor: "transparent",
-      color: "transparent",
-      display: "inline-block",
-    }}
-  >
-    Development
-  </span>{" "}
-  &nbsp;
-  <span
-    style={{
-      WebkitTextStrokeWidth: "2px",
-      WebkitTextStrokeColor: "#002768",
-      WebkitTextFillColor: "transparent",
-      color: "transparent",
-      display: "inline-block",
-    }}
-  >
-    Design
-  </span>
-  <br />
-  <span style={{ color: "#000000" }}>Solutions</span>
-</h1>
+      <div className="relative z-30 flex items-center justify-center min-h-screen px-4 text-white text-center pb-0">
+        <div className="w-full max-w-5xl px-4 pb-0">
+          <>
+            <h1 className="custom-heading">
+              <span style={{ color: "#000000" }}>Expert </span>
+              <span className="outlined">Website</span>
+              <br />
+              <span className="outlined">Development</span>{" "}
+              <span style={{ color: "#000000" }}>& </span>
+              <span className="outlined">Design</span>
+              <br />
+              <span style={{ color: "#000000" }}>Solutions</span>
+            </h1>
 
+            <style jsx>{`
+              .custom-heading {
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-style: normal;
+                margin: 0;
+              }
+
+              .outlined {
+                -webkit-text-stroke-width: 2px;
+                -webkit-text-stroke-color: #002768;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+                display: inline-block;
+              }
+
+              .custom-heading {
+                font-size: 42px;
+                line-height: 52px;
+              }
+
+              @media (min-width: 640px) {
+                .custom-heading {
+                  font-size: 60px;
+                  line-height: 72px;
+                }
+              }
+
+              @media (min-width: 768px) {
+                .custom-heading {
+                  font-size: 76px;
+                  line-height: 90px;
+                }
+              }
+
+              @media (min-width: 1024px) {
+                .custom-heading {
+                  font-size: 70px;
+                  line-height: 101px;
+                }
+              }
+            `}</style>
+          </>
 
           <p
-            className="max-w-2xl mx-auto mb-8 text-sm sm:text-base md:text-lg"
+            className="max-w-4xl mx-auto mb-4 text-sm sm:text-base md:text-lg"
             style={{ color: "rgba(31, 31, 31, 0.50)" }}
           >
             We craft visually stunning, user-centric websites that drive results.
-            <br />
-            From modern design to seamless functionality, Help businesses stand
+           
+            From modern design to seamless  <br /> functionality, Help businesses stand
             out in the digital world.
           </p>
 
@@ -104,22 +109,25 @@ const HeroWithStats = () => {
             </Link>
 
             <Link href="/portfolio">
-              <button className="flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full transition text-sm sm:text-base min-h-[48px]">
-                <span className="group w-12 h-12 flex items-center justify-center border border-[#002768] rounded-full hover:bg-[#002768]">
-                  <FaPlay
-                    size={10}
-                    className="text-[#002768] group-hover:text-white"
-                  />
-                </span>
-                <span className="text-[#002768]">Explore Portfolio</span>
-              </button>
-            </Link>
+  <button className="flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full transition text-sm sm:text-base min-h-[48px]">
+    <span className="group w-12 h-12 flex items-center justify-center   overflow-hidden">
+      <Image
+        src="/mainpage/Mask group (6).svg" // 🔁 Replace with actual path
+        alt="Play Button"
+        width={60}
+        height={60}
+        className="group-hover:invert"
+      />
+    </span>
+    <span className="text-[#002768]">Explore Portfolio</span>
+  </button>
+</Link>
           </div>
         </div>
       </div>
 
       {/* 📊 Stats Section */}
-      <div className="relative z-30 w-full flex justify-center px-4 pt-0 pb-12">
+      <div className="relative z-30 w-full flex justify-center px-4 -mt-20 pb-12">
         <div
           className="relative w-full max-w-6xl overflow-hidden flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0 text-white text-center px-6 sm:px-12 py-10 sm:py-12"
           style={{

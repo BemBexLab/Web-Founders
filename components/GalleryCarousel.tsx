@@ -143,7 +143,7 @@ const GalleryCarousel = () => {
   return (
     <section className="w-full py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
       <p className="text-[#BF0B30] font-semibold mb-2">Our Portfolio</p>
-      <h2 className="text-[#1F1F1F] text-3xl sm:text-4xl md:text-5xl font-bold mb-10 leading-tight">
+      <h2 className="text-[#1F1F1F] text-3xl sm:text-4xl md:text-5xl font-normal mb-10 leading-tight">
         Our{" "}
         <span className="text-black">
           Previous Work
@@ -203,9 +203,9 @@ const GalleryCarousel = () => {
                   bg-black rounded-2xl overflow-hidden shadow-xl border transition-all duration-300 flex-shrink-0 snap-center
                   ${
                     actualIndex === activeIndex
-                      ? "scale-105 border-[#DE2F04]"
+                      ? "scale-105 border-[#002768]"
                       : "scale-95 opacity-80 border-white/10"
-                  } hover:scale-105 hover:opacity-100 hover:border-[#DE2F04]/60`}
+                  } hover:scale-105 hover:opacity-100 hover:border-[#002768]/60`}
               >
                 <img
                   src={imageUrl}
@@ -229,8 +229,8 @@ const GalleryCarousel = () => {
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeIndex
-                  ? "w-8 bg-[#DE2F04]"
-                  : "w-2 bg-white/30 hover:bg-white/50"
+                  ? "w-8 bg-[#002768]"
+                  : "w-2 bg-gray-300 hover:bg-gray-500"
               }`}
             />
           ))}

@@ -11,7 +11,7 @@ const PortfolioHero = () => {
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-14 md:gap-10 relative z-10">
         {/* 🔥 Left Text Content */}
         <div className="max-w-xl text-center lg:text-left text-[#002768]">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
             Our Results-Driven
             <br />
             Project Showcase

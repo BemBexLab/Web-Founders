@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="bg-white flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-16 mt-16 gap-12">
           {/* Left Side - Content */}
           <div className="w-full sm:w-1/2 text-[#002768] pl-4 sm:pl-12">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
              Custom Solutions. Exceptional Results.
             </h2>
     

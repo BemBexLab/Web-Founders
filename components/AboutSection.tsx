@@ -10,8 +10,8 @@ const AboutSection = () => {
         <div className="relative z-20 w-full lg:w-1/2">
           <p className="text-[#BF0B30] font-semibold mb-3">About us</p>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6 text-[#1F1F1F]">
-            Discover Bembexlab Your Trusted <br className="hidden md:block" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-tight tracking-tight mb-6 text-[#1F1F1F]">
+            Discover Web Founder Your Trusted <br className="hidden md:block" />
             Website Development Partner
           </h2>
 

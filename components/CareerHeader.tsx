@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function CareerSection() {
   return (
-    <section className="bg-white flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-16 mt-16 gap-12">
+    <section className="bg-white flex flex-col sm:flex-row items-center justify-between px-4 mt-16 gap-12">
       {/* Left Side - Content */}
       <div className="w-full sm:w-1/2 text-[#002768] pl-4 sm:pl-12">
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-          Craft Your Future with Us
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+          Craft <span className="text-black">Your Future</span> <br /> with Us
         </h2>
 
         <p className="text-base sm:text-lg lg:text-xl mb-6" style={{ color: "rgba(31, 31, 31, 0.50)" }}>

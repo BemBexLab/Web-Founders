@@ -9,8 +9,8 @@ const ServicesHeader = () => {
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* ✅ Left Side: Text Content */}
         <div className="text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-[#002768]">
-           Your Brand. <br /> Your Success.
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-[#002768]">
+           Your <span className="text-black">Brand.</span> <br /> Your <span className="text-black">Success.</span>
           </h1>
 
          <p

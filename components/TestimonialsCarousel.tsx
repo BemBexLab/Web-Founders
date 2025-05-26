@@ -65,6 +65,26 @@ const TestimonialsCarousel = () => {
 
   return (
     <section className="relative w-full py-20 px-4 md:px-8 max-w-[100vw] mx-auto overflow-hidden">
+       {/* 🔵 Left & Right Background Images */}
+  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-none">
+    <Image
+      src="/mainpage/“ (3).svg"
+      alt="Left Decoration"
+      width={300}
+      height={300}
+      className=""
+    />
+  </div>
+  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-0 pointer-events-none">
+    <Image
+      src="/mainpage/“ (4).svg"
+      alt="Right Decoration"
+      width={300}
+      height={300}
+      className=""
+    />
+  </div>
+      
       <div className="relative mx-auto max-w-4xl h-[450px] perspective-1000 z-10">
         <div
           ref={carouselRef}

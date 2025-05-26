@@ -18,50 +18,55 @@ const BehindTheScenes = () => {
         />
       </div>
 
-      {/* Glass Card */}
-    <div
-  className="relative z-10 w-full max-w-5xl px-6 sm:px-10 py-12 sm:py-14 text-center mt-[-5%]"
-  style={{
-    background: "#002768",
-  }}
->
-  {/* Heading */}
-  <h2 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white leading-tight tracking-tight mb-6">
-    <span className="bg-gradient-to-r from-[#ff512f] to-[#fff] text-white text-transparent bg-clip-text">
-      Watch the creative process
-    </span>
-    <br />
-    <span className="text-white">behind our digital works.</span>
-  </h2>
-
-  {/* Paragraph */}
-  <p className="text-white text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8">
-    At Bembex lab, our commitment to quality and excellence goes beyond
-    expectations. From the initial brainstorming session.
-  </p>
-
-  {/* Button */}
-  <Link href="/ContactUs">
-    <button
-      className="px-6 py-3 text-white text-sm font-medium transition"
+      <div
+      className="relative z-10 w-full max-w-5xl px-6 sm:px-10 py-12 sm:py-14 text-center mt-[-5%]"
       style={{
-        borderRadius: "75px",
-        border: "1px solid white",
-        background:
-          "linear-gradient(180deg, rgba(191, 11, 48, 0.10) 41.53%, rgba(0, 39, 104, 0.10) 100%)",
+        borderRadius: "30px",
+        background: "#002768",
         boxShadow: `
           9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset,
           -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset
         `,
         backdropFilter: "blur(9.137930870056152px)",
-        WebkitBackdropFilter: "blur(9.137930870056152px)", // for Safari
+        WebkitBackdropFilter: "blur(9.137930870056152px)", // Safari support
       }}
     >
-      Book a call →
-    </button>
-  </Link>
-</div>
+      {/* Heading */}
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-normal text-white leading-tight tracking-tight mb-6">
+        <span className="bg-gradient-to-r from-[#ff512f] to-[#fff] text-white text-transparent bg-clip-text">
+          Watch the creative process
+        </span>
+        <br />
+        <span className="text-white">behind our digital works.</span>
+      </h2>
 
+      {/* Paragraph */}
+      <p className="text-white text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8">
+        At Web Founders, our commitment to quality and excellence goes beyond
+        expectations. From the initial brainstorming session.
+      </p>
+
+      {/* CTA Button */}
+      <Link href="/ContactUs">
+        <button
+          className="px-6 py-3 text-white text-sm font-medium transition"
+          style={{
+            borderRadius: "75px",
+            border: "1px solid white",
+            background:
+              "linear-gradient(180deg, rgba(191, 11, 48, 0.10) 41.53%, rgba(0, 39, 104, 0.10) 100%)",
+            boxShadow: `
+              9.138px -9.138px 9.138px 0px rgba(169, 36, 3, 0.10) inset,
+              -9.138px 9.138px 9.138px 0px rgba(255, 255, 255, 0.10) inset
+            `,
+            backdropFilter: "blur(9.137930870056152px)",
+            WebkitBackdropFilter: "blur(9.137930870056152px)",
+          }}
+        >
+          Book a call →
+        </button>
+      </Link>
+    </div>
     </section>
   );
 };

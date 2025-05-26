@@ -77,7 +77,7 @@ const ServicesSection = () => {
           fill="none"
         >
           <path
-            stroke="#ff3c1b"
+            stroke="#002768"
             strokeWidth="0.6"
             d="M708.818 123.244L708.534 122.739L708.076 123.094L462.151 313.585L509.2 1.07444L509.287 0.5H508.706H309.029H308.456L308.534 1.0678L351.31 313.605L101.07 120.944L100.611 120.591L100.329 121.096L1.56384 297.309L1.27537 297.823L1.83039 298.023L292.552 402.861L1.8243 511.979L1.27757 512.184L1.56453 512.693L104.623 695.352L104.914 695.866L105.373 695.495L349.166 498.579L308.534 808.935L308.46 809.5H309.029H506.559H507.136L507.054 808.928L462.145 498.575L705.925 691.201L706.385 691.564L706.672 691.053L805.436 514.84L805.721 514.331L805.174 514.127L512.285 405L805.174 295.873L805.722 295.669L805.436 295.159L708.818 123.244Z"
           />
@@ -102,14 +102,13 @@ const ServicesSection = () => {
             },
           }}
         >
-          <p className="text-[#BF0B30] font-semibold mb-3 text-sm sm:text-base">
+          <p className="text-[#002768] font-semibold mb-3 text-sm sm:text-base">
             Our Services
           </p>
-          <h2 className="text-[#1F1F1F] font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.35] mb-8">
+          <h2 className="text-[#1F1F1F] font-normal text-3xl sm:text-4xl md:text-5xl leading-[1.35] mb-8">
             <div>
-              <span className="">E</span>
               <span className="">
-                xp
+                Expert
               </span>{" "}
               Website
             </div>
@@ -141,7 +140,7 @@ const ServicesSection = () => {
     WebkitBackdropFilter: "blur(9.137930870056152px)",
   }}
 >
-  Book a call →
+  Book a call  →
 </button>
 
           </Link>
@@ -169,13 +168,13 @@ const ServicesSection = () => {
                       exit={{ opacity: 0, x: -100, y: -40, rotate: -15 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <div className="w-full h-full rounded-[115px] border border-[#DE2F04] bg-[rgba(222,47,4,0.10)] backdrop-blur-[9.13px] shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]" />
+                      <div className="w-full h-full rounded-[115px] border border-[#002768] bg-[#002768] backdrop-blur-[9.13px] shadow-[9.138px_-9.138px_9.138px_0px_rgba(169,36,3,0.10)_inset,_-9.138px_9.138px_9.138px_0px_rgba(255,255,255,0.10)_inset]" />
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 {/* Text */}
-                <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] text-[#111111] leading-none">
+                <div className="uppercase font-extrabold text-2xl sm:text-3xl md:text-[42px] text-[#111111] leading-none hover:text-white">
                   {item}
                 </div>
               </div>

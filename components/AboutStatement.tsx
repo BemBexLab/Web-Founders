@@ -14,7 +14,7 @@ const OurVisionStatement = () => {
           <p className="text-[#BF0B30] text-sm font-semibold mb-3">
             Our Vision
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-[#002768]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-6 text-[#002768]">
             Your{" "}
             <span className="">
               vision,
