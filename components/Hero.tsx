@@ -19,18 +19,58 @@ const HeroWithStats = () => {
       <div className="absolute inset-0 bg-[#FDFDFD] z-10" />
 
       {/* ✨ Hero Content */}
-      <div className="relative z-30 flex items-center justify-center min-h-screen px-4 text-white text-center pb-10">
+      <div className="relative z-30 flex items-center justify-center min-h-screen px-4 text-white text-center">
         <div className="w-full max-w-5xl px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-center">
-            <span className="text-black">Expert </span>
-            <span className="text-black">Website</span>
-            <br />
-            <span className="text-black">Development</span>{" "}
-            <span className="text-black">&</span>{" "}
-            <span className="text-black">Design</span>
-            <br />
-            <span className="text-black">Solutions</span>
-          </h1>
+          <h1
+  style={{
+    textAlign: "center",
+    fontFamily: "Montserrat, sans-serif",
+    fontSize: "90px",
+    fontStyle: "normal",
+    fontWeight: 600,
+    lineHeight: "101px",
+  }}
+>
+  <span style={{ color: "#000000" }}>Expert </span>
+  <span
+    style={{
+      WebkitTextStrokeWidth: "2px",
+      WebkitTextStrokeColor: "#002768",
+      WebkitTextFillColor: "transparent",
+      color: "transparent",
+      display: "inline-block",
+    }}
+  >
+    Website
+  </span>
+  <br />
+  <span
+    style={{
+      WebkitTextStrokeWidth: "2px",
+      WebkitTextStrokeColor: "#002768",
+      WebkitTextFillColor: "transparent",
+      color: "transparent",
+      display: "inline-block",
+    }}
+  >
+    Development
+  </span>{" "}
+  &nbsp;
+  <span
+    style={{
+      WebkitTextStrokeWidth: "2px",
+      WebkitTextStrokeColor: "#002768",
+      WebkitTextFillColor: "transparent",
+      color: "transparent",
+      display: "inline-block",
+    }}
+  >
+    Design
+  </span>
+  <br />
+  <span style={{ color: "#000000" }}>Solutions</span>
+</h1>
+
 
           <p
             className="max-w-2xl mx-auto mb-8 text-sm sm:text-base md:text-lg"
@@ -79,7 +119,7 @@ const HeroWithStats = () => {
       </div>
 
       {/* 📊 Stats Section */}
-      <div className="relative z-30 w-full flex justify-center px-4 py-12">
+      <div className="relative z-30 w-full flex justify-center px-4 pt-0 pb-12">
         <div
           className="relative w-full max-w-6xl overflow-hidden flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0 text-white text-center px-6 sm:px-12 py-10 sm:py-12"
           style={{

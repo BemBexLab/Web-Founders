@@ -7,7 +7,7 @@ import LayoutWrapper from "@/components/LayoutWrapper"; // Import the new wrappe
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bembex lab",
+  title: "Web Founders USA",
   description:
     "Elevate your online presence with our expert web design and development agency. We build fast, modern, responsive websites that drive results for startups, businesses, and brands.",
 };
@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="Bambex lab logo Text white 1 (1).png"
+          href="/navbar/image (3).svg"
           sizes="any"
         />
       </head>
