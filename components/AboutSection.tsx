@@ -16,7 +16,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="text-gray-400 text-base sm:text-[17px] leading-relaxed mb-10 max-w-xl">
-            At Bembex lab, we specialize in providing innovative website
+            At Web Founders, we specialize in providing innovative website
             development and design services that help businesses thrive in the
             digital world. With a passion for creativity and a focus on
             delivering exceptional user experiences.

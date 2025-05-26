@@ -116,7 +116,7 @@ const Footer = () => {
               />
             </div>
             <span className="text-[#1F1F1F] font-medium text-sm sm:text-[17px]">
-              hr@bembexlab.com
+              hello@rendimiricco.com
             </span>
           </div>
 

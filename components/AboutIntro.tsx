@@ -11,7 +11,7 @@ const AboutIntro = () => {
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-6 text-[#002768]">
             <span className="">
-              Discover Bembexlab
+              Discover Web Foundera
             </span>
             <span className="">
               Your Trusted Website
@@ -25,7 +25,7 @@ const AboutIntro = () => {
         {/* 🔹 Right Content */}
         <div className=" text-sm sm:text-base leading-relaxed space-y-5"  style={{ color: "rgba(31, 31, 31, 0.5)" }}>
           <p>
-            At Bembex Lab, we combine innovation and technical expertise
+            At Web Founders, we combine innovation and technical expertise
             to deliver top-tier web development and design solutions.
             Established with a vision to create impactful digital experiences.
           </p>

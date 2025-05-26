@@ -86,7 +86,7 @@ export default function ContactUsSection() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             />
           </div>
-          <span className="text-lg text-[#002768]">hr@bembexlab.com</span>
+          <span className="text-lg text-[#002768]">hr@webfounder.com</span>
         </div>
 
         <div className="flex items-center space-x-6 mb-6">
@@ -106,7 +106,7 @@ export default function ContactUsSection() {
       </div>
 
       {/* Right Side - Contact Form */}
-      <div className="w-full sm:w-1/2 bg-white p-8 rounded-lg shadow-xl border-2 border-[#002768] bg-opacity-20 backdrop-blur-md">
+      <div className="w-full sm:w-1/2 bg-white p-8 rounded-lg shadow-xl border-2 border-black bg-opacity-20 backdrop-blur-md">
         <h2 className="text-3xl text-white mb-6">Contact Form</h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">

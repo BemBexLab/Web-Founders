@@ -88,7 +88,7 @@ const WhyChooseUs = () => {
           </h2>
 
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-            At Bembex lab, our commitment to quality and excellence goes beyond
+            At Web Founders, our commitment to quality and excellence goes beyond
             expectations. From the initial brainstorming session to the final
             product delivery, we focus on perfection at every stage of the
             process. We don’t just provide a service – we become your dedicated
