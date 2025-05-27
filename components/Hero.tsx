@@ -110,15 +110,16 @@ const HeroWithStats = () => {
 
             <Link href="/portfolio">
   <button className="flex items-center justify-center gap-3 text-white px-6 py-3 rounded-full transition text-sm sm:text-base min-h-[48px]">
-    <span className="group w-12 h-12 flex items-center justify-center   overflow-hidden">
-      <Image
-        src="/mainpage/Mask group (6).svg" // 🔁 Replace with actual path
-        alt="Play Button"
-        width={60}
-        height={60}
-        className="group-hover:invert"
-      />
-    </span>
+    <div className="group w-[50px] h-[50px] transition-all duration-300 hover:w-[65px] hover:h-[65px]">
+  <Image
+    src="/mainpage/Mask group (6).svg"
+    alt="Play Button"
+    width={60}
+    height={60}
+    className="w-full h-full object-contain transition-all duration-300"
+  />
+</div>
+
     <span className="text-[#002768]">Explore Portfolio</span>
   </button>
 </Link>
