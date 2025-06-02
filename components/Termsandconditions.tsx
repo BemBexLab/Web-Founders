@@ -4,12 +4,12 @@ const TermsAndConditions = () => {
     <>
       <main className="w-full max-w-7xl mx-auto px-4 md:px-8 py-10 text-gray-800">
         <div className="text-4xl font-bold mb-8 text-center flex justify-center mt-[100px]">
-          <h1 className="text-white mr-2">Terms &</h1>
-          <h1 className="text-[#DE2F04]">Condition</h1>
+          <h1 className="text-[#002768] mr-2">Terms &</h1>
+          <h1 className="text-[#002768]">Condition</h1>
         </div>
 
         <section className="mb-10">
-          <p className="text-white">
+          <p className="text-black">
             By using Bembex Lab and signing up as a Client, you agree to be
             legally bound by these Terms and Conditions of Use, including those
             terms and conditions incorporated by reference.
@@ -19,7 +19,7 @@ const TermsAndConditions = () => {
         <br />
 
         <section className="mb-10">
-          <p className="text-white">
+          <p className="text-black">
             Please read these Terms and Conditions carefully. If you do not
             accept these Terms and Conditions, you may not use the Bembex Lab
             service. By placing any order with Bembex Lab you agree to all our
@@ -36,7 +36,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-10">
-          <p className="text-white">
+          <p className="text-black">
             You acknowledge and agree that Bembex Lab shall have the right (but
             not the obligation) in its sole discretion, to pre-screen, refuse or
             remove any project and/or user provided content that violates these
@@ -59,10 +59,10 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Bembex lab General Services
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Description. Bembex Lab Service is an online service where
               individuals or entities that have signed up with Bembex Lab as
@@ -153,10 +153,10 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-3xl text-[#DE2F04] font-semibold mb-4 ">
+          <h2 className="text-3xl text-[#002768] font-semibold mb-4 ">
             Registration, Password, User Identity
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Your User Identity. When you register as a Client, you will create
               a user identity (your "User Identity"), which will be your
@@ -196,10 +196,10 @@ const TermsAndConditions = () => {
         </section>
 
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Ownership; Rights to Use
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Creative and Response Briefs. Upon submission of a Creative or
               Response Brief or any other information or media provided by you
@@ -246,10 +246,10 @@ const TermsAndConditions = () => {
         <br />
         <br />
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Nondisclosure and Privacy
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Bembex LAB. intends to use commercially reasonable efforts to
               follow its privacy policy; as such privacy policy may be changed
@@ -265,10 +265,10 @@ const TermsAndConditions = () => {
         <br />
         <br />
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Eligibility, Access, Use and Service
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Eligibility Requirements. To register as a Client, you must be at
               least 18 years of age, agree to these Terms and Conditions and
@@ -306,7 +306,7 @@ const TermsAndConditions = () => {
             </li>
           </ul>
           <br />
-          <ul className="text-white">
+          <ul className="text-black">
             <li>(i) reveals trade secrets, unless you own them;</li>
             <li>
               (ii) infringes on any other proprietary or intellectual property
@@ -331,7 +331,7 @@ const TermsAndConditions = () => {
             </li>
           </ul>
           <br />
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               (a) use any incomplete, false or inaccurate biographical
               information or other information for purposes of registering as a
@@ -370,7 +370,7 @@ const TermsAndConditions = () => {
               without limitation,
             </li>
           </ul>
-          <ul className="text-white pl-5">
+          <ul className="text-black pl-5">
             <li className="text-[15px]">
               (i) accessing data not intended for you or logging into a server
               or account that you are not authorized to access;
@@ -411,7 +411,7 @@ const TermsAndConditions = () => {
             </li>
           </ul>
           <br />
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               (h) Operation of Web Site. Bembex Lab shall not be responsible for
               any delays or interruptions of, or errors or omissions contained
@@ -434,10 +434,10 @@ const TermsAndConditions = () => {
         </section>
         <br />
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Communications
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               By using the Bembex Lab Service, you agree to receive, via email
               or otherwise, status notifications, a monthly newsletter, and
@@ -458,18 +458,18 @@ const TermsAndConditions = () => {
               our services. Message frequency may vary. Message and data rates
               may apply. Reply STOP to opt out of further messaging and HELP for
               assistance or call
-              <span className="text-[#DE2F04]">+1 470-469-7096</span>. Please
+              <span className="text-[#002768]">+1 470-469-7096</span>. Please
               see our Privacy Policy at{" "}
-              <span className="text-[#DE2F04]"> Privacy Policy</span>.
+              <span className="text-[#002768]"> Privacy Policy</span>.
             </li>
           </ul>
         </section>
         <br />
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Validity of Refund
           </h2>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Money Back Guarantee is valid till 30 days of order placement,
               provided that all other terms are applied. Money Back Guarantee is
@@ -482,13 +482,13 @@ const TermsAndConditions = () => {
         </section>
         <br />
         <section>
-          <h2 className="text-3xl font-semibold mb-4 text-[#DE2F04]">
+          <h2 className="text-3xl font-semibold mb-4 text-[#002768]">
             Refund will be processed in 30 days
           </h2>
-          <h3 className="text-[#DE2F04] mb-4 text-[20px]">
+          <h3 className="text-[#002768] mb-4 text-[20px]">
             Disclaimers; Indemnification; Limitations of Liability
           </h3>
-          <ul className="text-white">
+          <ul className="text-black">
             <li>
               Responsibility for Content. Bembex Lab shall not be responsible
               for any use that is or is not made of the Web Site or the Service.
