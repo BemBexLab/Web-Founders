@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -37,10 +38,14 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="../">
-              <img
+              <Image
                 src="/navbar/image (3).svg"
                 alt="Bembex Lab"
+                width={180}
+                height={40}
                 className="w-[150px] sm:w-[180px] object-contain"
+                style={{ height: "auto" }}
+                priority // optional if this is your logo or above-the-fold
               />
             </Link>
           </div>
@@ -50,29 +55,24 @@ const Footer = () => {
 
           {/* Menu */}
           <div
-  className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm flex flex-wrap justify-between md:justify-center md:gap-16 "
-  style={{
-    background: "#002768",
-
-  }}
->
-  <a href="/Packages" className=" transition text-white">
-    Pricing
-  </a>
-  <a href="/ContactUs" className=" transition text-white">
-    Contact us
-  </a>
-  <a href="/Terms" className="transition text-white">
-    Terms
-  </a>
-  <a
-    href="/PrivacyandPolicy"
-    className=" transition text-white"
-  >
-    Privacy
-  </a>
-</div>
-
+            className="w-full md:w-auto rounded-[75px] px-6 py-3 text-sm flex flex-wrap justify-between md:justify-center md:gap-16 "
+            style={{
+              background: "#002768",
+            }}
+          >
+            <a href="/Packages" className=" transition text-white">
+              Pricing
+            </a>
+            <a href="/ContactUs" className=" transition text-white">
+              Contact us
+            </a>
+            <a href="/Terms" className="transition text-white">
+              Terms
+            </a>
+            <a href="/PrivacyandPolicy" className=" transition text-white">
+              Privacy
+            </a>
+          </div>
         </div>
 
         {/* Divider */}
@@ -89,14 +89,17 @@ const Footer = () => {
                 background: "#002768",
               }}
             >
-              <img
+              <Image
                 src="/material-symbols_call.png"
                 alt="Phone"
+                width={20}
+                height={20}
                 className="w-5 h-5"
+                style={{ objectFit: "contain" }}
               />
             </div>
             <span className="text-[#1F1F1F] font-medium text-sm sm:text-[17px]">
-              +92(314)-2518727
+              (470) 205-2274
             </span>
           </div>
 
@@ -109,14 +112,17 @@ const Footer = () => {
                 background: "#002768",
               }}
             >
-              <img
+              <Image
                 src="/ic_baseline-email.png"
                 alt="Email"
+                width={20}
+                height={20}
                 className="w-5 h-5"
+                style={{ objectFit: "contain" }}
               />
             </div>
             <span className="text-[#1F1F1F] font-medium text-sm sm:text-[17px]">
-              hello@webfounder.com
+              info@webfoundersusa.com
             </span>
           </div>
 
@@ -132,9 +138,9 @@ const Footer = () => {
               <img src="/Group.png" alt="Location" className="w-5 h-5" />
             </div>
             <div className="text-[#1F1F1F] font-medium text-sm sm:text-[17px] leading-snug break-words">
-              68 CIRCULAR ROAD, #02-01,
+              1014 Garner Rd SW, Lilburn,
               <br className="block sm:hidden" />
-              SINGAPORE 049422
+              GA 30047, USA
             </div>
           </div>
         </div>

@@ -79,7 +79,7 @@ export default function Navbar() {
         <div className="block lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white border border-[#002768] rounded-full px-4 py-2 text-sm"
+            className="text-[#002768] rounded-full px-4 py-2 text-lg"
           >
             {menuOpen ? "✕ Close" : "☰ Menu"}
           </button>
